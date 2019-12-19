@@ -253,12 +253,12 @@ entries:
       url: /mydoc_troubleshooting.html
       output: web, pdf
 
-  - title: Tag archives
+  - title: Resources
     output: web
     folderitems:
 
-    - title: Tag archives overview
-      url: /mydoc_tag_archives_overview.html
+    - title: Technical Rejection Criteria
+      url: /mydoc_technical_rejection_criteria_resources.html
       output: web
 
       subfolders:
