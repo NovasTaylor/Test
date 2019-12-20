@@ -258,7 +258,7 @@ entries:
     folderitems:
 
     - title: Technical Rejection Criteria
-      url: /mydoc_technical_rejection_criteria_resources.html
+      url: /mydoc_resources_technical_rejection_criteria.html
       output: web
 
       subfolders:
