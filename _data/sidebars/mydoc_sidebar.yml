@@ -32,9 +32,6 @@ entries:
       url: /mydoc_introduction.html
       output: web, pdf
 
-    - title: Supported features
-      url: /mydoc_supported_features.html
-      output: web, pdf
 
   - title: Submission
     output: web, pdf
@@ -77,21 +74,9 @@ entries:
       output: web
 
     - title: Data Conversion
+      url: /mydoc_senddata_data_conversion.html
       output: web
-
-      subfolders:
-      - title: XPT to TTL
-        url: /mydoc_foo.html
-        output: web
-
-      - title: XPT to CSV
-        url: /mydoc_foo.html
-        output: web
-
-      - title: Mapping CSV using Stardog SMS
-        url: /mydoc_foo.html
-        output: web
-
+  
   - title: Resources
     output: web
     folderitems:
