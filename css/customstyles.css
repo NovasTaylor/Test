@@ -338,10 +338,10 @@ table {
 
                                             
 pre {                                       
-    tab-size: 3;                            
-    -moz-tab-size: 3;                       
-    /* Code for Firefox */                  
-    -o-tab-size: 3;                         
+    tab-size: 2;     /*TW was 3. Testing for box fir*/
+    -moz-tab-size: 2;  /*TW was 3 */                      
+    /*TW Code for Firefox                   
+    -o-tab-size: 2;  was 3 */                                              
 }                                           
                                             
 pre {                                       
@@ -1184,7 +1184,7 @@ pre, table code {
 }
 
 pre {
-    margin: 25px 0px;
+    margin: 10px 0px;  /*TW was 25px 0px */
 }
 
 #json-box-container pre {

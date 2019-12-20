@@ -76,6 +76,15 @@ entries:
     - title: Data Conversion
       url: /mydoc_senddata_data_conversion.html
       output: web
+
+    - title: SHACL Shapes
+      url: /mydoc_senddata_shacl_shapes.html
+      output: web, pdf
+
+    - title: SHACL Shapes
+      url: /mydoc_senddata_validation.html
+      output: web, pdf
+
   
   - title: Resources
     output: web
