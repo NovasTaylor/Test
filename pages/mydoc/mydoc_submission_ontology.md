@@ -1,14 +1,17 @@
 ---
-title: Technical Rejection Criteria Resources
+title: Ontology for Submission
 last_updated: July 3, 2016
 sidebar: mydoc_sidebar
 permalink: mydoc_submission_ontology.html
 folder: mydoc
 ---
 
-## Ontology for Submission Criteria Modeling. 
+## Introduction 
 
 ...Placeholder...
+
+## Classes
+
 
 
 {% include links.html %}

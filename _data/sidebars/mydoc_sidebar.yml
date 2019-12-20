@@ -36,14 +36,6 @@ entries:
       url: /mydoc_supported_features.html
       output: web, pdf
 
-    - title: About the theme author
-      url: /mydoc_about.html
-      output: web, pdf
-
-    - title: Support
-      url: /mydoc_support.html
-      output: web, pdf
-
   - title: Submission
     output: web, pdf
     folderitems:
@@ -72,6 +64,34 @@ entries:
       url: /mydoc_submission_validation.html
       output: web, pdf
 
+  - title: SEND Data
+    output: web
+    folderitems:
+
+    - title: Data Sources
+      url: /mydoc_senddata_data_sources.html
+      output: web
+
+    - title: Ontology
+      url: /mydoc_senddata_ontology.html
+      output: web
+
+    - title: Data Conversion
+      output: web
+
+      subfolders:
+      - title: XPT to TTL
+        url: /mydoc_foo.html
+        output: web
+
+      - title: XPT to CSV
+        url: /mydoc_foo.html
+        output: web
+
+      - title: Mapping CSV using Stardog SMS
+        url: /mydoc_foo.html
+        output: web
+
   - title: Resources
     output: web
     folderitems:
@@ -79,36 +99,3 @@ entries:
     - title: Technical Rejection Criteria
       url: /mydoc_resources_technical_rejection_criteria.html
       output: web
-
-      subfolders:
-      - title: Tag archive pages
-        output: web
-        subfolderitems:
-
-        - title: Formatting pages
-          url: /tag_formatting.html
-          output: web
-
-        - title: Navigation pages
-          url: /tag_navigation.html
-          output: web
-
-        - title: Content types pages
-          url: /tag_content_types.html
-          output: web
-
-        - title: Publishing pages
-          url: /tag_publishing.html
-          output: web
-
-        - title: Special layout pages
-          url: /tag_special_layouts.html
-          output: web
-
-        - title: Collaboration pages
-          url: /tag_collaboration.html
-          output: web
-
-        - title: Troubleshooting pages
-          url: /tag_troubleshooting.html
-          output: web

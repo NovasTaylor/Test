@@ -6,9 +6,10 @@ permalink: mydoc_submission_technical_rejection_criteria.html
 folder: mydoc
 ---
 
-## Technical Rejection Criteria for Submissions
+## Introduction
 
 ...Placeholder...
 
+## List of Resources
 
 {% include links.html %}
