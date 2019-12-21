@@ -132,7 +132,7 @@ pre.data:before {
 pre.data:before {
     color: #9E9E27;
     content: "Data";
-    width: 4em;
+    width: 5em;  /* was 4em */ 
     font-weight: bold;
 }
 
@@ -150,7 +150,7 @@ pre.sms:before {
 pre.sms:before {
     color: #808080;
     content: "SMS";
-    width: 4em;
+    width: 5em; /* was 4em */
     font-weight: bold;
 }
 
@@ -170,7 +170,7 @@ pre.owl:before {
 pre.owl:before {
     color: #417CD0;
     content: "OWL";
-    width: 5em;
+    width: 5em; /* was 5 em */
     font-weight: bold;
 }
 
@@ -189,7 +189,7 @@ pre.shacl:before {
 pre.shacl:before {
     color: #779E27;
     content: "SHACL";
-    width: 5em;
+    width: 5em; /* was 5em */
     font-weight: bold;
 }
 
@@ -204,7 +204,7 @@ pre.report:before {
 pre.report:before {
     color: #D09F41;  /* text color */
     content: "Report";
-    width: 5em;
+    width: 5em; /* was 5 em */
     font-weight: bold;
 }
 
@@ -338,7 +338,7 @@ table {
 
                                             
 pre {                                       
-    tab-size: 2;     /*TW was 3. Testing for box fir*/
+    tab-size: 2;     /*TW was 3. Testing for box fit*/
     -moz-tab-size: 2;  /*TW was 3 */                      
     /*TW Code for Firefox                   
     -o-tab-size: 2;  was 3 */                                              

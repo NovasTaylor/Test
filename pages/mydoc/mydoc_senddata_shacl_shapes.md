@@ -1,5 +1,5 @@
 ---
-title: Ontology for Submission
+title: SHACL Shapes for SEND Data
 last_updated: 2020-12-20
 sidebar: mydoc_sidebar
 permalink: mydoc_senddata_shacl_shapes.html
@@ -10,7 +10,7 @@ folder: mydoc
 
 ...Placeholder...
 
-# Animal Subject Shape
+## Animal Subject Shape
 The Animal Subject IRI `:Animal_xxx` is a natural starting point for developing rules based on the Demographics domain because each row in the source DM data contains values for an individual Animal Subject. SHACL shapes are created with reuse in mind, as reflected in both the structure and naming conventions. Where practical, shapes are named using a description of their function plus the word `Shape` followed by a dash and then an abbreviated name of the class or entity they act upon. Examples:
 
 * `hasMin1Max1Shape-USubjID` - validates that each Animal Subject has a minimum of one and maximum of one USUBJID value.  
@@ -22,20 +22,16 @@ The `sh:message` property provides meaningful messages about violations when the
 
 Example:  <code>sh:message "Subject --> USUBJID violation. <b>[SD0083]</b>" ;</code>
 
-
-# Animal Subject Shape
 A shape is created to define the constraints attached to the Animal Subject IRI. Each individual constraint is described in the sections that follow.
 <div class='ruleState'>
   <div class='ruleState-header'>Rule Statement</div>
    One <code>sh:property</code> for each type of <code>predicate</code>---> <code>object</code> relation attached directly to the AnimalSubject IRI.
 </div>
 
-
 <div class='def'>
   <div class='def-header'>Description</div>
   Each type of <code>predicate ----> object </code> relation for the AnimalSubject class, with the exception of predicates like `rdf:type`, `skos:prefLabel`, etc.,  has a `sh:property` definition for a shape that validates that type of entity.
 </div>
-
 
 Test data for Animal Subject 00M01 illustrates the predicates and objects attached to an AnimalSubject IRI.
 <pre class='data'>
@@ -56,7 +52,6 @@ cj16050:Animal_037c2fdc
 The Node Shape `study:AnimalSubjectShape` describes nodes of the class `study:AnimalSubject` . FDA Rule numbers are added as comments to facilitate referencing back to the original FDA requirements.
 
 <pre class='shacl'>
-# Animal Subject Shape
 study:AnimalSubjectShape
   a              <font class='nodeBold'>sh:NodeShape </font>;
   <font class='nodeBold'>sh:targetClass study:AnimalSubject </font>;
@@ -108,7 +103,7 @@ Identifiers USUBJID, SUBJID
   
   ***Figure 1: Animal Subject Node to ID Values***
 
-##  **USUBJID** : FDA Rule SD0083
+### USUBJID : FDA Rule SD0083
 
 
 The spreadsheet [FDA-Validator-Rules.xlsx](https://github.com/phuse-org/SENDConform/tree/master/doc/FDA/FDA-Validator-Rules.xlsx) defines the rule for USUBJID in the DM Domain as:
@@ -160,7 +155,6 @@ Animal Subject 00M01 illustrates compliant data with a single USUBJID value.
 The SHACL shape `study:hasMin1Max1Shape-USubjID` evaluates AnimalSubject via its attachment to the parent `study:AnimalSubjectShape`. It evaluates the path `study:hasUniqueSubjectID` from the targetClass to determine if one and only one value of USUBJID IRI is present. 
 
 <pre class='shacl'>
-# Animal Subject Shape
 study:AnimalSubjectShape
   a              sh:NodeShape ;
   sh:targetClass study:AnimalSubject
@@ -180,7 +174,7 @@ study:<font class='nodeBold'>hasMin1Max1Shape-USubjID </font>
 </pre>
 <br/>
 
-#### Test Case 1 : Animal Subject Assigned Two USUBJID values 
+Test Case 1 : Animal Subject Assigned Two USUBJID values 
 
 Test data for Animal Subject 99T11 (subject URI Animal_6204e90c) shows *two* USUBJID values: 
 <pre class='data'>
@@ -233,7 +227,7 @@ The query result shows Animal 99T11 is assigned two `usubjid`, in violation of t
 </pre>
 
 
-#### Verify
+Verify
 
 SPARQL independently verifies `Animal_6204e90c` as having two USUBJID values. File: [/SPARQL/USUBJID-RC1RC2-TC1-Verify.rq](https://github.com/phuse-org/SENDConform/blob/master/SPARQL/USUBJID-RC1RC2-TC1-Verify.rq)
 <pre class='sparql'>
@@ -257,7 +251,7 @@ SPARQL independently verifies `Animal_6204e90c` as having two USUBJID values. Fi
 
 
 
-#### Test Case 2 : Animal Subject has no USUBJID value
+Test Case 2 : Animal Subject has no USUBJID value
 The AnimalSubject IRI `Animal_22218ae1` has no USUBJID (and no SUBJID).
 <pre class='data'>
   cj16050:Animal_22218ae1
@@ -301,7 +295,7 @@ cj16050:Animal_6204e90c   study:participatesIn         cj16050:SexDataCollection
 </pre>
 
 
-#### Verify
+Verify
 SPARQL independently confirms the report identifying `Animal_22218ae1c` as having no USUBJID. Because `usubjid` is used as the `skos:prefLabel` for AnimalSubject, there is not label to return when `usubjid` is missing. File: [/SPARQL/USUBJID-RC1RC2-TC2-Verify.rq](https://github.com/phuse-org/SENDConform/blob/master/SPARQL/USUBJID-RC1RC2-TC2-Verify.rq)
 
 <pre class="sparql">
@@ -348,7 +342,7 @@ cj16050:<font class='nodeBold'>Animal_2706cb1e</font>
 
 There are multiple ways to assess the USUBJID requirement in SHACL-Core and SHACL-SPARQL.  Two SHACL-Core alternatives are discussed here.
 
-#### Method 1: **Identify USUBJIDs** assigned to multiple AnimalSubjects
+Method 1: **Identify USUBJIDs** assigned to multiple AnimalSubjects
 
 <div class='ruleState'>
   <div class='ruleState-header'>Rule Statement</div>
@@ -377,7 +371,7 @@ A Report is not provided because Method 2 was chosen over Method 1 for the reaso
 
 <br/>
 
-#### Method 2: **Identify the AnimalSubjects** that have the same USUBJID
+Method 2: **Identify the AnimalSubjects** that have the same USUBJID
 
 <div class='ruleState'>
   <div class='ruleState-header'>Rule Statement</div>
@@ -468,7 +462,8 @@ Use the AnimalSubject IRI values to identify the `usubjid`. File: [/SPARQL/USUBJ
 
 
 
-#### Verify
+Verify
+
 Independently verify `Animal_252450f2` and `Animal_2706cb1e` share the same USUBJID (and consequently the same label for the AnimalSubject and USUBJID). File: [/SPARQL/USUBJID-RC3-M2-Verify.rq](https://github.com/phuse-org/SENDConform/blob/master/USUBJID-RC3-M2-Verify.rq)
 <pre class='sparql'>
   SELECT ?animalIRI ?usubjid 
@@ -494,7 +489,6 @@ Independently verify `Animal_252450f2` and `Animal_2706cb1e` share the same USUB
 <a name='ruleSD1001'></a>
 
 ##  **SUBJID** : FDA Rule SD1001
-
 
 The spreadsheet [FDA-Validator-Rules.xlsx](https://github.com/phuse-org/SENDConform/tree/master/doc/FDA/FDA-Validator-Rules.xlsx) defines the rule for SUBJID in the DM Domain as:
 
