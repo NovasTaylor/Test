@@ -29,7 +29,7 @@ entries:
       type: homepage
 
     - title: Site Structure
-      url: /mydoc_sites_structure.html
+      url: /mydoc_site_structure.html
       output: web, pdf
 
 
@@ -95,6 +95,6 @@ entries:
     output: web
     folderitems:
 
-    - title: Technical Rejection Criteria
-      url: /mydoc_resources_technical_rejection_criteria.html
+    - title: References and Resources
+      url: /mydoc_references_and_resources.html
       output: web

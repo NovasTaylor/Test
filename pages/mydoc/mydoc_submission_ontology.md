@@ -2,7 +2,7 @@
 title: Ontology for Submission
 last_updated: July 3, 2016
 sidebar: mydoc_sidebar
-permalink: mydoc_submission_ontology.html
+permalink: mydoc_senddata_ontology.html
 folder: mydoc
 ---
 

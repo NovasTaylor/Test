@@ -293,6 +293,7 @@ th {
     .label {
         border: 1px solid #000
     }
+    /*TW use table formatting as in customstyles.css
     .table {
         border-collapse: collapse!important
     }
@@ -304,6 +305,7 @@ th {
     .table-bordered th {
         border: 1px solid #ddd!important
     }
+    */
 }
 
 @font-face {
@@ -1896,7 +1898,8 @@ pre,
 samp {
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace
 }
-
+/*TW Use project CSS for code as in customstyles.css */
+/*
 code {
     padding: 2px 4px;
     font-size: 90%;
@@ -1904,6 +1907,7 @@ code {
     background-color: #f9f2f4;
     border-radius: 4px
 }
+*/
 
 kbd {
     padding: 2px 4px;

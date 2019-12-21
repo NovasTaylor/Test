@@ -189,7 +189,7 @@ pre.shacl:before {
 pre.shacl:before {
     color: #779E27;
     content: "SHACL";
-    width: 5em; /* was 5em */
+    width: 6em; /* was 5em */
     font-weight: bold;
 }
 
@@ -204,7 +204,7 @@ pre.report:before {
 pre.report:before {
     color: #D09F41;  /* text color */
     content: "Report";
-    width: 5em; /* was 5 em */
+    width: 6em; /* was 5 em */
     font-weight: bold;
 }
 
@@ -219,7 +219,7 @@ pre.sparql:before {
 pre.sparql:before {
     color: #DA7093;  /* text color */
     content: "SPARQL";
-    width: 6em;  /* width of the box surrouding the content */
+    width: 7em;  /* width of the box surrouding the content */
     font-weight: bold;
 }
 
@@ -234,7 +234,7 @@ pre.queryResult:before {
 pre.queryResult:before {
     color: #DA7093;  /* text color */
     content: "Query Result";
-    width: 8em;  /* width of the box surrouding the content */
+    width: 10em;  /* width of the box surrounding the content */
     font-weight: bold;
 }
 

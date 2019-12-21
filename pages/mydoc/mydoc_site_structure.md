@@ -8,7 +8,7 @@ folder: mydoc
 
 ## Introduction 
 
-...Placeholder...
+...Placeholder page that will describe the repository structure, cloning, etc....
 
 
 
