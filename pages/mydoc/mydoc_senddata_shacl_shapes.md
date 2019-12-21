@@ -8,7 +8,7 @@ folder: mydoc
 
 ## Introduction 
 
-...Placeholder...
+<font class='toBeAdded''>Content to be added...</font>
 
 ## Animal Subject Shape
 The Animal Subject IRI `:Animal_xxx` is a natural starting point for developing rules based on the Demographics domain because each row in the source DM data contains values for an individual Animal Subject. SHACL shapes are created with reuse in mind, as reflected in both the structure and naming conventions. Where practical, shapes are named using a description of their function plus the word `Shape` followed by a dash and then an abbreviated name of the class or entity they act upon. Examples:

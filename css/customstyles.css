@@ -50,7 +50,7 @@
   font-style: italic;
   font-size:1.1em;
 }
-.infoOmitted{
+.infoOmitted, .toBeAdded{
   color: #4e4e4e;     /* dark grey */
   background-color: #e1e1e1; /* light grey */ 
   font-weight: bold;
@@ -1013,8 +1013,8 @@ a.fa.fa-envelope-o.mailto {
     font-weight: 600;
 }
 
-h3 {color: #ED1951; font-weight:normal; font-size:130%;}
-h4 {color: #808080; font-weight:normal; font-size:120%; font-style:italic;}
+h3 {color: #015CAE; font-weight:normal; font-size:130%;}  /*TW original red: #ED1951 */
+h4 {color: #015CAE; font-weight:normal; font-size:120%; font-style:italic;} /*TW original : #808080 */
 
 .alert, .callout {
     overflow: hidden;
