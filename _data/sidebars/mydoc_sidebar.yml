@@ -23,13 +23,13 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: Get started
+    - title: Project Description
       url: /index.html
       output: web, pdf
       type: homepage
 
-    - title: Introduction
-      url: /mydoc_introduction.html
+    - title: Site Structure
+      url: /mydoc_sites_structure.html
       output: web, pdf
 
 
