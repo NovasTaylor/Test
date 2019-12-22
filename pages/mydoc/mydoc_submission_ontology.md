@@ -1,14 +1,14 @@
 ---
 title: Ontology for Submission
-last_updated: July 3, 2016
+last_updated: 2019-12-21
 sidebar: mydoc_sidebar
-permalink: mydoc_senddata_ontology.html
+permalink: mydoc_submission_ontology.html
 folder: mydoc
 ---
 
 ## Introduction 
 
-...Placeholder...
+<font class='toBeAdded>Content to be added</font>
 
 ## Classes
 
