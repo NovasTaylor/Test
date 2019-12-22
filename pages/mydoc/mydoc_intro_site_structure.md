@@ -1,6 +1,6 @@
 ---
 title: Site Structure
-last_updated: 2020-12-20
+last_updated: 2019-12-20
 sidebar: mydoc_sidebar
 permalink: mydoc_intro_site_structure.html
 folder: mydoc

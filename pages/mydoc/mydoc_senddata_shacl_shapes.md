@@ -1,6 +1,6 @@
 ---
 title: SHACL Shapes for SEND Data
-last_updated: 2020-12-20
+last_updated: 2019-12-20
 sidebar: mydoc_sidebar
 permalink: mydoc_senddata_shacl_shapes.html
 folder: mydoc
@@ -945,12 +945,6 @@ WHERE{
 </pre>
 
 
-### Verify
-
-<br/><br/>
-
----
-
 <!--- RULE COMPONENT 4 ------------------------------------------------------->
 <a name='rc4'></a>
 
@@ -1242,7 +1236,7 @@ FDA Validator Rule ID | FDA Validator Message | Business or Conformance Rule Val
 ------|-------------------|--------------------------|-----------------------------
 **SDxxxx** | |  | **xxxxxx**
 
-<font class='toBeAdded'>More content to be added.</font>
+<font class='toBeAdded'>More content to be added</font>
 
 
 
