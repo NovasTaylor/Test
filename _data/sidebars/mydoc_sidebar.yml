@@ -19,7 +19,7 @@ entries:
       output: pdf
       type: frontmatter
 
-  - title: Overview
+  - title: Introduction
     output: web, pdf
     folderitems:
 
@@ -29,8 +29,13 @@ entries:
       type: homepage
 
     - title: Site Structure
-      url: /mydoc_site_structure.html
+      url: /mydoc_intro_site_structure.html
       output: web, pdf
+
+    - title: Graph Data and Validation
+      url: /mydoc_intro_graph_data_and_validation.html
+      output: web, pdf
+
 
 
   - title: Submission
