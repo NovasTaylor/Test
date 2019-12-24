@@ -8,7 +8,7 @@ folder: mydoc
 
 ## Introduction 
 
-<font class='toBeAdded>Content to be added</font>
+<font class='toBeAdded'>Content to be added</font>
 
 ## Classes
 

@@ -9,11 +9,12 @@ folder: mydoc
 
 ## Site Theme
 This site is constructed for GitHub Pages using the Jeykll Theme modified to use a 
-side navigation bar as described on the page [https://idratherbewriting.com/documentation-theme-jekyll/] https://idratherbewriting.com/documentation-theme-jekyll/. Features available but not currently in use by this site include:
+side navigation bar as described on the page [https://idratherbewriting.com/documentation-theme-jekyll/](https://idratherbewriting.com/documentation-theme-jekyll/). Features available but not currently in use by this site include:
 
-    * Blogging 
-    * PDF creation 
-    * Tags
+* Blogging 
+* PDF creation 
+* Tags
+* Other advanced features and formatting
  
  Additional CSS customization is implemented.
 

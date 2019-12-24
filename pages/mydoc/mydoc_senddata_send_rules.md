@@ -2,7 +2,7 @@
 title: SEND Rules
 last_updated: 2020-12-24
 sidebar: mydoc_sidebar
-permalink: mydoc_senddata_validation.html
+permalink: mydoc_senddata_send_rules.html
 folder: mydoc
 ---
 
