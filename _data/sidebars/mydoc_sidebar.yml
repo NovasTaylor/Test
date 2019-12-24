@@ -23,12 +23,12 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: Project Description
+    - title: Overview
       url: /index.html
       output: web, pdf
       type: homepage
 
-    - title: Site Structure
+    - title: Project Repository Structure
       url: /mydoc_intro_site_structure.html
       output: web, pdf
 
@@ -36,8 +36,7 @@ entries:
       url: /mydoc_intro_graph_data_and_validation.html
       output: web, pdf
 
-
-
+<!--- SUBMISSION ------------------------------------------------------------->
   - title: Submission
     output: web, pdf
     folderitems:
@@ -66,9 +65,15 @@ entries:
       url: /mydoc_submission_validation.html
       output: web, pdf
 
+<!--- SEND DATA -------------------------------------------------------------->
+
   - title: SEND Data
     output: web
     folderitems:
+
+    - title: SEND Rules
+      url: /mydoc_senddata_send_rules.html
+      output: web
 
     - title: Data Sources
       url: /mydoc_senddata_data_sources.html
@@ -81,11 +86,6 @@ entries:
     - title: Data Conversion
       url: /mydoc_senddata_data_conversion.html
       output: web
-
-    - title: Ontology
-      url: /mydoc_senddata_ontology.html
-      output: web, pdf
-
 
     - title: SHACL Shapes
       url: /mydoc_senddata_shacl_shapes.html
