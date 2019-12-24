@@ -103,3 +103,7 @@ entries:
     - title: References and Resources
       url: /mydoc_references_and_resources.html
       output: web
+
+    - title: About This Site
+      url: /mydoc_references_about_this_site.html
+      output: web
