@@ -1,5 +1,5 @@
 ---
-title: SEND Data Ontology
+title: Ontology
 last_updated: 2019-12-24
 sidebar: mydoc_sidebar
 permalink: mydoc_senddata_ontology.html
