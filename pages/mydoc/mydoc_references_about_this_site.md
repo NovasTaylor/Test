@@ -21,3 +21,6 @@ side navigation bar as described on the page [https://idratherbewriting.com/docu
 <font class='toBeAdded'>Instructions to be added after move to PhUSE site.</font>
 
 
+
+
+{% include links.html %}

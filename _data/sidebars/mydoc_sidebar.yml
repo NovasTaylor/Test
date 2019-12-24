@@ -36,7 +36,6 @@ entries:
       url: /mydoc_intro_graph_data_and_validation.html
       output: web, pdf
 
-<!--- SUBMISSION ------------------------------------------------------------->
   - title: Submission
     output: web, pdf
     folderitems:
@@ -64,8 +63,6 @@ entries:
     - title: Validation
       url: /mydoc_submission_validation.html
       output: web, pdf
-
-<!--- SEND DATA -------------------------------------------------------------->
 
   - title: SEND Data
     output: web
@@ -95,7 +92,6 @@ entries:
       url: /mydoc_senddata_validation.html
       output: web, pdf
 
-  
   - title: Resources
     output: web
     folderitems:
