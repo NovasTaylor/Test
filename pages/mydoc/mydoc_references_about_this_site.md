@@ -9,7 +9,13 @@ folder: mydoc
 
 ## Site Theme
 This site is constructed for GitHub Pages using the Jeykll Theme modified to use a 
-side navigation bar as described on the page [https://idratherbewriting.com/documentation-theme-jekyll/] https://idratherbewriting.com/documentation-theme-jekyll/. Features like blogging and PDF creation are not currently implemented and additional CSS customization is implemented.
+side navigation bar as described on the page [https://idratherbewriting.com/documentation-theme-jekyll/] https://idratherbewriting.com/documentation-theme-jekyll/. Features available but not currently in use by this site include:
+
+    * Blogging 
+    * PDF creation 
+    * Tags
+ 
+ Additional CSS customization is implemented.
 
 ## Download or Clone
 <font class='toBeAdded'>Instructions to be added after move to PhUSE site.</font>
