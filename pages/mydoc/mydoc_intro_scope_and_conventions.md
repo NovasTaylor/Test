@@ -1,12 +1,28 @@
 ---
-title: SEND Rules
-last_updated: 2020-12-24
+title: Scope and Conventions
+last_updated: 2019-12-19
 sidebar: mydoc_sidebar
-permalink: mydoc_senddata_send_rules.html
+permalink: mydoc_intro_scope_and_conventions.html
 folder: mydoc
 ---
 
-<font class='toBeAdded'>To add: Source and description of the SEND rules (high level)</font>
+
+# Data
+The prototype uses data from the study "RE Function in Rats", located in the repository 
+at [/data/studies/RE Function in Rats](https://github.com/phuse-org/SENDConform/tree/master/data/studies/RE%20Function%20in%20Rats) and is limited to the Demographics (DM) and Trial Summary (TS) domains. Original source data is converted to .TTL using the driver script [r/driver.R](https://github.com/phuse-org/SENDConform/blob/master/r/driver.R) as described on the [Data Conversion](DataConversion.md) page. 
+
+The converted RDF data used for developing SHACL is available here: [SHACL/CJ16050Constraints/DM-CJ16050-R.TTL](https://github.com/phuse-org/SENDConform/blob/master/SHACL/CJ16050Constraints/DM-CJ16050-R.TTL) 
+
+Instructions on how to create validation reports in Stardog is available on the [Running Validation Reports](SHACL-RunValReport.md) page.
+
+# SHACL Constraints
+
+A detailed description of SHACL syntax is beyond the scope of this document. Please refer to the [SHACL Introduction](SHACL-Intro.md) page for a list of resources. 
+
+The SHACL shapes used in this project are available here:
+* AnimalSubjectShape  [SHACL/CJ16050Constraints/SHACL-AnimalSubject.TTL](https://github.com/phuse-org/SENDConform/blob/master/SHACL/CJ16050Constraints/SHACL-AnimalSubject.TTL). 
+
+
 ## SHACL for SEND Rules 
 The project team considered two alternative approaches to modeling the SEND Rules:
 
@@ -79,12 +95,10 @@ The project defines a number of basic shapes that re-use core components for dat
    Stardog Mapping Syntax, used to import CSV files to the database. 
 </pre>
 
-
 <pre class="owl">
    Contains an excerpt from an ontology that applies to the rule being described.
    Optional. Not all rules rely on the project ontologies. 
 </pre>
-
 
 <pre class="shacl">
   Contains a representation of the shapes graph (in full or in part). 
@@ -104,3 +118,5 @@ The project defines a number of basic shapes that re-use core components for dat
 </pre>
 
 
+
+{% include links.html %}
