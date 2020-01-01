@@ -19,4 +19,3 @@ By modeling data validation checks and submission rules using Linked Data, spons
 used for data collection can be re-used for review prior to submission. When the same rules are used by both sponsor and regulatory agency,
 the risk of a rejected submission is lowered.
 
-{% include links.html %}
