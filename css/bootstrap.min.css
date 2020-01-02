@@ -126,7 +126,6 @@ pre {
     overflow: auto
 }
 
-code,
 kbd,
 pre,
 samp {
@@ -1892,23 +1891,11 @@ address {
     line-height: 1.42857143
 }
 
-code,
 kbd,
 pre,
 samp {
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace
 }
-
-/*TW Use project CSS for code as in customstyles.css */
-/*
-code {
-    padding: 2px 4px;
-    font-size: 90%;
-    color: #c7254e;
-    background-color: #f9f2f4;
-    border-radius: 4px
-}
-*/
 
 kbd {
     padding: 2px 4px;
@@ -1938,10 +1925,9 @@ pre {
     border-radius: 4px
 }
 
-pre code {
+pre {
     padding: 0;
     font-size: inherit;
-    color: inherit;
     white-space: pre-wrap;
     background-color: transparent;
     border-radius: 0
