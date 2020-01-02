@@ -696,7 +696,8 @@ div#toc ul li ul li::before {
 div#toc >ul::before {
     content: "Table of Contents";
     font-weight: 500;
-    color: #555;
+    /* color: #555; */
+    color: #015CAE;  /* dark blue to match theme-blue.css */
     text-align:center;
     margin-left:auto;
     margin-right:auto;

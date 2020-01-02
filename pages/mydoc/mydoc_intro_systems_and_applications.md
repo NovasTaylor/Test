@@ -1,5 +1,5 @@
 ---
-title: Graph Data and Validation
+title: Systems and Applications
 last_updated: 2020-01-02
 sidebar: mydoc_sidebar
 permalink: mydoc_intro_systems_and_applications.html
@@ -10,5 +10,8 @@ folder: mydoc
 
 <font class='toBeAdded'> This page will describe the Triplestore used in the project, coding languages, interface creation tools, etc.</font>
 
+
+## Accessing the PhUSE Stardog Environment
+<font class='toBeAdded'>How to access the online project triplestore...</font>
 
 {% include links.html %}

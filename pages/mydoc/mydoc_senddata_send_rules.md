@@ -44,3 +44,12 @@ DM | SD0069 | disposition | <font class='restrict'>excluded</font> | requires DS
 DM | SE2311 | Set code    | <font class='restrict'>excluded</font> | Requires TX dataset
 DM | SD0071 | screen fail | <font class='restrict'>excluded</font> | requires TA dataset
 DM | SD0066 | arm         | <font class='restrict'>excluded</font> | requires TA dataset
+
+
+**Table 2. Rules Exclusive to TS Domain**
+
+<font class='toBeAdded'>Content to be added.</font>
+
+Domain |Rule   |Category | SHACL Dev Status| Reason for Exclusion
+---|-------|------- | ------ | ------------------- |
+TS |       |         |       |                     |

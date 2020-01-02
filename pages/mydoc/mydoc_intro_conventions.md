@@ -12,9 +12,7 @@ folder: mydoc
 
 Data sources and their conversion from tabular form to RDF is described within each sub-project.
 
-## Content Conventions
-
-Color coding provides a guide to the content.
+## Documentation
 
 <div class='ruleState'>
   <div class='ruleState-header'>Rule Statement</div>
@@ -50,12 +48,13 @@ Color coding provides a guide to the content.
 </pre>
 
 <pre class="sparql">
-  SPARQL statements used to retrieve additional information based on values identified in the report or to validate values identified in the validation report.
+  SPARQL statements used to retrieve additional information based on values identified in the report or 
+  to validate values identified in the validation report.
 </pre>
 
 <pre class="queryResult">
   Results of a SPARQL query for tracing information from the Report back to additional information or to verify
-  the SHACL constraint is catching all test cases.
+   the SHACL constraint is catching all test cases.
 </pre>
 
 
