@@ -104,9 +104,9 @@ study:Animal
 
   ***Figure 1: Animal Subject Node to ID Values***
 
-### *USUBJID* <a name='ruleSD0083'></a>
+### USUBJID <a name='ruleSD0083'></a>
 
-<font class='ruleComponent'>FDA Rule SD0083</font>
+<font class='FDARule'>FDA Rule SD0083</font>
 
 The spreadsheet [FDA-Validator-Rules.xlsx](https://github.com/phuse-org/SENDConform/tree/master/doc/FDA/FDA-Validator-Rules.xlsx) defines the rule for USUBJID in the DM Domain as:
 
@@ -489,9 +489,9 @@ Independently verify `Animal_252450f2` and `Animal_2706cb1e` share the same USUB
 ---
 <a name='ruleSD1001'></a>
 
-###  **SUBJID**
+###  SUBJID
 
-<font class='ruleComponent'>FDA Rule SD1001</font>
+<font class='rule'>FDA Rule SD1001</font>
 
 The spreadsheet [FDA-Validator-Rules.xlsx](https://github.com/phuse-org/SENDConform/tree/master/doc/FDA/FDA-Validator-Rules.xlsx) defines the rule for SUBJID in the DM Domain as:
 
@@ -502,8 +502,8 @@ FDA Validator Rule ID | FDA Validator Message | Business or Conformance Rule Val
 The Rule Components and corresponding SHACL shapes for SD1001 are similar to those defined for <a href='#ruleSD0083'>USUBJID/SD0083</a> with exception of the predicate changing to `study:hasSubjectID`and result messages specific to SUBJID instead of USUBJID. Details for SD1001 are therefore not provided here. The SHACL is available in the Shapes file [SHACL-AnimalSubject.TTL](../SHACL/CJ16050Constraints/SHACL-AnimalSubject.TTL)
 
 
-## **Reference Interval**
-<font class='ruleComponent'>FDA Rule SD1002</font>
+## Reference Interval
+<font class='FDARule'>FDA Rule SD1002</font>
 
 ***Figure 1*** shows the connection from the Animal Subject IRI to its Reference Interval and the associated  SHACL Shapes and SEND Rules.
 
@@ -531,7 +531,7 @@ In the SENDConform Project, RFSTDTC and RFENDTC are modeled as part of a Referen
 Translation of each Rule Component into SHACL and evaluation of test data is described below. Test cases in addition to those documented on these pages are available in the file [TestCases.xlsx](https://github.com/phuse-org/SENDConform/blob/master/SHACL/CJ16050Constraints/TestCases.xlsx)
 
 
-<font class='ruleComponent'>Data Structure</font>
+<font class='h3NoTOC'>Data Structure</font>
 
 Familiarity with the data structure is necessary to explain the constraints and test cases. **Figure 1** illustrates a partial set of data for test subject 99T1 where the Reference Interval end date *precedes* the start date, thus violating Rule Component 4 of SD1002.
 
@@ -540,7 +540,7 @@ Familiarity with the data structure is necessary to explain the constraints and 
 
   ***Figure 1: Reference Interval for Animal 99T1 (incomplete data)***
 
-<font class='ruleComponent'>Translation into SHACL</font>
+<font class='h3NoTOC'>Translation into SHACL</font>
 
 <!--- RULE COMPONENT 1 ------------------------------------------------------->
 <a name='rc1'></a>
@@ -1071,7 +1071,7 @@ WHERE {
 </pre>
 
 
-<font class='ruleComponent'>Verify</font>
+<font class='verify'>Verify</font>
 
 Verification confirms Animal Subject 99T1 and 99T2 with End Data preceding Start Date. Note how when the start date is a string it also flags AnimalSubject 99T10 as a violator. The SPARQL statement is very similar to the query used in the SHACL-SPARQL constraint.
 
@@ -1103,7 +1103,7 @@ Verification confirms Animal Subject 99T1 and 99T2 with End Data preceding Start
 Animal Subject Shape - Demographics Domain
 ==================================
 
-## **Age**
+## Age
 
 ***Figure 1*** shows the connection from the Animal Subject IRI to its Age value.
 
@@ -1120,7 +1120,7 @@ The following rules are defined on this page:
 * ...more rules coming!
 
 <a name='sd0084'></a>
-<font class='ruleComponent'>Age >= 0: FDA Rule SD0084</font>
+<font class='FDARule'>Age >= 0: FDA Rule SD0084</font>
 
 FDA Validator Rule ID | FDA Validator Message | Business or Conformance Rule Validated | FDA Validator Rule  
 ------|-------------------|--------------------------|-----------------------------
@@ -1131,12 +1131,12 @@ FDA Validator Rule ID | FDA Validator Message | Business or Conformance Rule Val
 
 **1. [AGE must be greater than or equal to 0. ](#rc1)**
 
-<font class='ruleComponent'>Data Structure</font>
+<font class='h3NoTOC'>Data Structure</font>
 
 Refer back to **Figure 1** to see how age is indirectly associated with an AnimalSubject via a study:participatesIn predicate that leads to an outcome IRI that in turn contains the age value and units. Most subjects in the study are the same age (8 Weeks), resulting in a small number of tests in outcome IRIs instead of traditional tests on each age value associated with an Animal Subject.
 
 
-<font class='ruleComponent'>Translation into SHACL</font>
+<font class='h3NoTOC'>Translation into SHACL</font>
 
 <!--- RULE COMPONENT 1 ------------------------------------------------------->
 <a name='rc1'></a>
@@ -1232,7 +1232,7 @@ SPARQL independently verifies the Animal Subject with  `age < 0`.  Source file: 
 </pre>
 <br/>
 
-<font class='ruleComponent'>Age XXX: FDA Rule SDxxxx</font>
+<font class='FDARule'>Age XXX: FDA Rule SDxxxx</font>
 
 <font class='toBeAdded'>The next AGE rule will be defined here.</font>
 
