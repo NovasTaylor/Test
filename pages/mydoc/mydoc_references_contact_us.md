@@ -12,10 +12,12 @@ This project is a PhUSE volunteer effort that is part of the Emerging Trends and
 ## Project Leads
 
 **Tim Williams**
-<a href = "mailto:tim.williams@phuse.eu?subject = "PhUSE Project: SEND Conformance and Validation">tim.williams@phuse.eu</a>
+
+<a href = 'mailto:tim.williams@phuse.eu?subject = "PhUSE Project: SEND Conformance and Validation"'>tim.williams@phuse.eu</a>
 
 **Dr. Armando Oliva**
-<a href = "mailto:aoliva@semanticallc.com?subject = "PhUSE Project: SEND Conformance and Validation">aoliva@semanticallc.com</a>
+
+<a href = 'mailto:aoliva@semanticallc.com?subject = "PhUSE Project: SEND Conformance and Validation"'>aoliva@semanticallc.com</a>
 
 
 {% include links.html %}
