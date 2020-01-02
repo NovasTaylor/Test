@@ -40,7 +40,7 @@ exclude:
 feedback_disable: true
 # if you uncomment the previous line, the Feedback link gets removed
 
-# highlighter: rouge
+highlighter: rouge
 # library used for syntax highlighting
 
 markdown: kramdown
@@ -48,7 +48,7 @@ kramdown:
  input: GFM
  auto_ids: true
  hard_wrap: false
-# syntax_highlighter: disable
+ syntax_highlighter: rouge
 
 # filter used to process markdown. note that kramdown differs from github-flavored markdown in some subtle ways
 
