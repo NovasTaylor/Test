@@ -50,14 +50,15 @@ entries:
       url: /mydoc_senddata_data_conversion.html
       output: web
 
+    - title: Ontology
+      url: /mydoc_senddata_ontology.html
+      output: web
+
     - title: SEND Rules
       url: /mydoc_senddata_send_rules.html
       output: web
 
 
-    - title: Ontology
-      url: /mydoc_senddata_ontology.html
-      output: web
 
 
     - title: SHACL Shapes

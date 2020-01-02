@@ -25,12 +25,12 @@ by filtering exclusively on the <font class="emph">DM domain for SEND 3.0</font>
 
 Domain |Rule   |Category | SHACL Dev Status| Reason for Exclusion
 ---|-------|-------  | ------ | -------------------
-DM | SD0083 | usubjid | [available](SHACL-AnimalSubject-Details.md) |
-DM | SD1001 | subjid  | [available](SHACL-AnimalSubject-Details.md) |
-DM | SD1002 | interval| [available](SHACL-AnimalSubject-ReferenceInterval-Details.md) |
+DM | SD0083 | usubjid | [available](mydoc_senddata_shacl_shapes.html) |
+DM | SD1001 | subjid  | [available](mydoc_senddata_shacl_shapes.html) |
+DM | SD1002 | interval| [available](mydoc_senddata_shacl_shapes.html) |
 DM | SD0088 | date    | <font class='development'>development</font> |
 DM | SD0087 | date    | <font class='development'>development</font> |
-DM | SD0084 | age     | [available](SHACL-AnimalSubject-Age-Details.md) |
+DM | SD0084 | age     | [available](mydoc_senddata_shacl_shapes.html) |
 DM | SD1121 | age     | planned |
 DM | SD1129 | age     | planned |
 DM | SD2019 | age     | <font class='restrict'>excluded</font> | AGETXT (age range) not in source data
@@ -44,10 +44,3 @@ DM | SD0069 | disposition | <font class='restrict'>excluded</font> | requires DS
 DM | SE2311 | Set code    | <font class='restrict'>excluded</font> | Requires TX dataset
 DM | SD0071 | screen fail | <font class='restrict'>excluded</font> | requires TA dataset
 DM | SD0066 | arm         | <font class='restrict'>excluded</font> | requires TA dataset
-
-
-## Resuable Shapes
-
-The project defines a number of basic shapes that re-use core components for data validation. Follow the links below for details. The list will continue to grow as more data and shapes are added.
-
-* [AnimalSubjectShape](SHACL-AnimalSubject-Details.md)

@@ -75,8 +75,7 @@ Reference Interval IRIs are created even when either start date or end date is m
 
 **Figure 2: Animal_99T5 Missing rfendtc**
 
-See the [Animal Subject Reference Interval](SHACL-AnimalSubject-ReferenceInterval-Details.md) page for how SHACL shapes are constructed based on this model.
-
+See [SHACL Shapes](mydoc_senddata_shacl_shapes.html) for how validation shapes are constructed based on this model.
 
 ## RDF Project Conventions
 ### Labels
@@ -184,7 +183,7 @@ Each CSV file has a corresponding map file in TTL format with "-map" appended to
 | DM-CJ16050-R-map.TTL | SMS Map       | Map CSV to Stardog graph.
 
 ### SMS Format
-The SMS files follow very strict formatting rules that go beyond the Stardog specification, primarily due to weak parsing expressions in the R Shiny visualization code (this can easily be improved!). These rules include:
+The SMS files follow formatting rules that go beyond the Stardog specification, primarily due to weak parsing expressions in the R Shiny visualization code (this can easily be improved!). These rules include:
 * `subject` is <i>hard left</i> on line by itself.
 * `predicate`, `object` line:
     * indented at least one space.
