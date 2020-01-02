@@ -1,38 +1,10 @@
 ---
 title: SEND Data Conversion
-last_updated: 2019-12-19
+last_updated: 2019-01-02
 sidebar: mydoc_sidebar
 permalink: mydoc_senddata_data_conversion.html
 folder: mydoc
 ---
-
-# SEND Data Conversion and Mapping
-
-## Introduction
-
-The prototype uses data from the study "RE Function in Rats", located in the repository
-at [/data/studies/RE Function in Rats](https://github.com/phuse-org/SENDConform/tree/master/data/studies/RE%20Function%20in%20Rats) and is limited to the Demographics (DM) and Trial Summary (TS) domains. Original source data is converted to .TTL using the driver script [r/driver.R](https://github.com/phuse-org/SENDConform/blob/master/r/driver.R) as described on the [Data Conversion](DataConversion.md) page.
-
-The converted RDF data used for developing SHACL is available here: [SHACL/CJ16050Constraints/DM-CJ16050-R.TTL](https://github.com/phuse-org/SENDConform/blob/master/SHACL/CJ16050Constraints/DM-CJ16050-R.TTL)
-
-Instructions on how to create validation reports in Stardog is available on the [Running Validation Reports](SHACL-RunValReport.md) page.
-
-# SHACL Constraints
-
-A detailed description of SHACL syntax is beyond the scope of this document. Please refer to the [SHACL Introduction](SHACL-Intro.md) page for a list of resources.
-
-The SHACL shapes used in this project are available here:
-* AnimalSubjectShape  [SHACL/CJ16050Constraints/SHACL-AnimalSubject.TTL](https://github.com/phuse-org/SENDConform/blob/master/SHACL/CJ16050Constraints/SHACL-AnimalSubject.TTL).
-
-
-The proof of concept starts with the Demographics (<b>DM</b>) and Trial Summary (<b>TS</b>) domains. Additional domains will be added as the project progresses. Data was copied from the PHUSE Scripts repository [SEND subfolder](https://github.com/phuse-org/phuse-scripts/tree/master/data/send) and to our repository at: /SENDConform/data/studies/<font class="parameter">Study Name</font>  .
-
-The easiest way to convert this source data to RDF would be to read in the row-by-column source data and convert it directly to RDF, using column names to identity the types of entities represented by the values in each cell, with the rows representing individuals. This is not the approach taken in this project. Data is re-formed to match an ontology that contains the types of entities and their relationships in the trial, based on knowledge of both the data and the clinical trial process.
-
-
-Two alternate methods are provided for the data conversion process. In method one, R scripts read the source SAS XPT file and convert it to TTL for import into a triplestore. The same data conversion R scripts simultaneously create .CSV files to support a second method of importing data into a Stardog triplestore [using Stardog Mapping Syntax (SMS)](DataMapping-StardogSMS.md). ***CAUTION: The .CSV files do not contain the full set of data for evaluating the test cases.***
-
-Additional data conversion methods using SAS or Python may be developed, time and expertise permitting.
 
 ## Source Data
 
@@ -52,14 +24,17 @@ The /csv folder contains data in comma-delimited format for ease of viewing the 
     SENDConform/data/studies/<font class="parameter">Study Name</font>/csv
 </pre>
 
-## Test Case Data
+
+The prototype uses data from the study "RE Function in Rats", located in the GitHub repository at [/data/studies/RE Function in Rats](https://github.com/phuse-org/SENDConform/tree/master/data/studies/RE%20Function%20in%20Rats) and is limited to the Demographics (DM) and Trial Summary (TS) domains. Original source data is converted to .TTL using the driver script [r/driver.R](https://github.com/phuse-org/SENDConform/blob/master/r/driver.R) as described on the [Data Conversion](DataConversion.md) page.
+
+The converted RDF data used for developing SHACL is available here: [SHACL/CJ16050Constraints/DM-CJ16050-R.TTL](https://github.com/phuse-org/SENDConform/blob/master/SHACL/CJ16050Constraints/DM-CJ16050-R.TTL)
+
+Instructions on how to create validation reports in Stardog is available on the [Running Validation Reports](SHACL-RunValReport.md) page.
+
+## Augmenting Test Case Data
 
 The data conversion process adds observations as violations to the various SHACL shapes that represent the rule components. Test observations are identified by `subjid` and `usubjid` values containing the pattern 99T<font class='parameter'>n</font>, in contrast to the original study data values of 00M0<font class='parameter'>n</font>. Test cases are documented in the file [TestCases.xlsx](https://github.com/phuse-org/SENDConform/blob/master/SHACL/CJ16050Constraints/TestCases.xlsx)
 
-
-## General Guidance
-
-<a name='AnimalUniqueID'></a>
 ### Generating Unique Identifiers for Animal Subjects
 It may seem reasonable to use SUBJID or USUBJID when forming IRIs for Animal Subjects. IRI creation is simple and the human-readable value facilitates traceability back to the original source. For example, the IRI for Subject 00M01 would be:
 `cj16050:Animal_00M01`
@@ -82,8 +57,7 @@ When this method of IRI generation is followed:
 
 Example Animal Subject IRI: `cj16050:Animal_a6d09184`
 
-Methods to generate UIDs for subjects in real-world settings is beyond the mandate of this project.See the [Technical Details page](https://github.com/phuse-org/UIDPharma/blob/master/UUIDTechDetails.md)) of the project [Unique Identifiers for the Pharmaceutical Industry](https://github.com/phuse-org/UIDPharma) for more information on generating unique identifiers.
-
+Methods to generate UIDs for subjects in real-world settings is beyond the mandate of this project. See the [Technical Details page](https://github.com/phuse-org/UIDPharma/blob/master/UUIDTechDetails.md)) of the project [Unique Identifiers for the Pharmaceutical Industry](https://github.com/phuse-org/UIDPharma) for more information on generating unique identifiers.
 
 ### Reference Interval IRIs
 
@@ -91,27 +65,27 @@ The modeling of Reference Intervals for Animal Subjects require some explanation
 
 Date values for reference start date (rfstdtc) and reference end date (rfendtc) are not directly attached to the Animal Subject IRI. Rather, the Animal Subject IRI <code>cj16050:Animal_<font class="parameter">hashvalue</font></code> is attached to a Reference Interval IRI <code>cj16050:Interval_<font class="parameter">hashvalue</font></code> which in turn has two date IRIs attached via the `time:hasBeginning` and `time:hasEnd` predicates (**Figure 1**).  
 
-<img src="images/RefIntervalStructureDateFail.PNG"/>
+<img src="images/RefIntervalStructureDateFail.PNG" height="250"/>
 
 **Figure 1: Animal_99T1 (incomplete data)**
 
 Reference Interval IRIs are created even when either start date or end date is missing (**Figure 2**), because the data for the corresponding non-missing date must still be represented in the graph. A Reference Interval is  also be created when ***both*** start and end dates are missing, showing that the concept of the interval is still present but the data supporting it is not available.
 
-<img src="images/RefIntervalStructureMissEndDate.PNG"/>
+<img src="images/RefIntervalStructureMissEndDate.PNG" height="250"/>
 
 **Figure 2: Animal_99T5 Missing rfendtc**
 
 See the [Animal Subject Reference Interval](SHACL-AnimalSubject-ReferenceInterval-Details.md) page for how SHACL shapes are constructed based on this model.
 
 
-### RDF Project Conventions
-#### Labels
+## RDF Project Conventions
+### Labels
 
 * `skos:prefLabel` is the primary label used in the graph. For controlled terms, `skos:prefLabel` contains the industry standard (CDISC) label, which is often in plural form (DAYS, WEEKS, etc.) while `rdfs:label` contains the W3C standard in singular form (DAY, WEEK, etc.). `rdfs:label` is optional for all other triples.
 
-# Conversion Details
+## Conversion Details
 
-## R Programs
+### R Programs
 
 R scripts for data conversion are located in the `/r` folder.
 
@@ -122,7 +96,7 @@ R scripts for data conversion are located in the `/r` folder.
 | 3.     | TS-convert.R         | TS instance data conversion to TTL, addition of observations to test constraints. (Not yet written)|
 
 
-## Graph Metadata
+### Graph Metadata
 Graph metadata, including data conversion date and graph version, is created within the **driver.R** script and exported to a TTL file for upload into the triplestore. A corresponding .csv file is created for SMS mapping purposes.
 
 The .csv and .ttl files are located in the folder:  `\data\studies\<font class="parameter">Study Name</font>\ttl`
@@ -134,7 +108,7 @@ The .csv and .ttl files are located in the folder:  `\data\studies\<font class="
 |Graphmeta-<font class='parameter'>StudyName</font>.TTL| RDF Triples | TTL file for loading directly into triplestore. |
 
 
-## DM
+### DM
 
 
 The .csv and .ttl files are located in the folder:  `\data\studies\<font class="parameter">Study Name</font>\ttl`
@@ -145,8 +119,8 @@ The .csv and .ttl files are located in the folder:  `\data\studies\<font class="
 | DM-CJ16050-R-map.TTL | SMS Map       | Map CSV to Stardog graph.
 | DM-CJ16050-R.TTL | RDF Triples       | TTL file for loading directly into triplestore.
 
-### Considerations for Study: CJ16050
-#### Data Imputation
+#### Considerations for Study: CJ16050
+##### Data Imputation
 
 Creation of values not in the original study data, or located in domains that are not part of the pilot include:.
 
@@ -157,7 +131,7 @@ Creation of values not in the original study data, or located in domains that ar
 | DURATION_IM  | "P56D"              | Duration code, derived from 8 weeks x 7 days/wk.
 
 
-#### Data
+##### Data
 -   **/data/studies/RE Function in Rats/ttl**
 
 File  | Description    | Contact
@@ -181,36 +155,36 @@ send.ttl |  "bare bones" SEND ontology to allow exporting protocol and instance 
 
 *Future development*
 
-# Data Mapping with Stardog SMS
+## Data Mapping with Stardog SMS
 
-## Introduction
+### Introduction
 Stardog Mapping Syntax (SMS) [(stardog.com)](https://www.stardog.com/docs/#_stardog_mapping_syntax) is provided as an alternative data mapping and upload process. The same data conversion scripts that produce TTL files for upload into a triplestore also create a .CSV file that can be mapped to the database. ***The .CSV files do not contain the full set of data for evaluating the test cases.***
 
 
-Why create this redundancy when the data does not contain the full set of test cases? The team benefits from having an RShiny app that reads in the SMS file and produces a visualization of the data schema. This schema is used during development to help ensure the nodes and relations are being constructed correctly. The visualization also aids in SHACL Shape and SPARQL query development.
+Why create this redundancy when the data does not contain the full set of test cases? The team benefits from having an R Shiny app that reads in the SMS file and produces a visualization of the data schema. This schema is used during development to help ensure the nodes and relations are being constructed correctly. The visualization also aids in SHACL Shape and SPARQL query development.
 
 
-## Conversion and Mapping Details
+### Conversion and Mapping Details
 The [Data Conversion and Mapping](DataConversion.md) page documents the source data and R Scripts used to create the .CSV files used by the SMS maps, including generation of values like SHA-1 hashes used in both methods.
 
 Each CSV file has a corresponding map file in TTL format with "-map" appended to the name.
 
-### Graph Metadata
+#### Graph Metadata
 
 | File      | Role                     | Description                                  |
 | --------- | ------------------------ | ---------------------------------------------|
 |Graphmeta-<font class='parameter'>StudyName</font>.csv | Basic graph metadata | Description of graph content, status, version, and time stamp information. |
 |Graphmeta-<font class='parameter'>StudyName</font>-map.TTL|SMS Map | Map CSV to Stardog graph. |
 
-### DM
+#### DM
 
 | File      | Role                     | Description                                |
 | --------- | ------------------------ ---------------------------------------------|
 | DM-CJ16050.CSV | Demographics        | May be a subset during development.
 | DM-CJ16050-R-map.TTL | SMS Map       | Map CSV to Stardog graph.
 
-## SMS Format
-The SMS files follow very strict formatting rules that go beyond the Stardog specification, primarily due to weak parsing expressions in the RShiny visualization code (this can easily be improved!). These rules include:
+### SMS Format
+The SMS files follow very strict formatting rules that go beyond the Stardog specification, primarily due to weak parsing expressions in the R Shiny visualization code (this can easily be improved!). These rules include:
 * `subject` is <i>hard left</i> on line by itself.
 * `predicate`, `object` line:
     * indented at least one space.
@@ -220,8 +194,8 @@ The SMS files follow very strict formatting rules that go beyond the Stardog spe
 
 This excerpt from the DM domain mapping file shows the AnimalSubject triples.  Values within `{ }` are substituted from the named columns in the .CSV file as the file is processed line-by-line.
 
+##### Animal Subject
 <pre class="sms">
-# Animal Subject
 cj16050:Animal_{DMROWSHORTHASH_IM}
   rdf:type                    study:AnimalSubject ;
   skos:prefLabel              "Animal {<font class='nodeBold'>subjid</font>}"^^xsd:string ;
@@ -242,13 +216,11 @@ Mapping and upload is accomplished by issuing a series of import commands simila
 
 A series of these commands is chained together in a batch file to upload all graphs at the same time, including additional files like the supporting ontology.
 
-
 ## Visualization
 An RShiny app for visualization the SMS files is available at [/r/vis/SMSMapVis-appSEND](https://github.com/phuse-org/phuse-scripts/tree/master/r/vis/SMSMapVis-app). Paths within the file `global.R` must change to point to your local clone of the repository.  **Figure 1** shows a screen shot of the SMS files for the DM and Graph Metadata portions of the graph.
 
 <img src="images/SMS-Map-RShinyVis.PNG"/>
 
 **Figure 1: Screen shot from RShiny SMS visualization.**
-
 
 {% include links.html %}

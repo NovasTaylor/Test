@@ -106,10 +106,14 @@ entries:
       url: /mydoc_references_and_resources.html
       output: web
 
+    - title: Project Repository Structure
+      url: /mydoc_intro_site_structure.html
+      output: web, pdf
+
     - title: About This Site
       url: /mydoc_references_about_this_site.html
       output: web
 
-    - title: Project Repository Structure
-      url: /mydoc_intro_site_structure.html
+    - title: Contact Us
+      url: /mydoc_references_contact_us.html
       output: web, pdf
