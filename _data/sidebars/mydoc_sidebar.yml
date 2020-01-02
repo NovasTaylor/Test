@@ -46,34 +46,6 @@ entries:
       output: web, pdf
 
 
-  - title: Submission
-    output: web, pdf
-    folderitems:
-
-    - title: Structure and Components
-      url: /mydoc_submission_structure_and_components.html
-      output: web, pdf
-
-    - title: Technical Rejection Criteria
-      url: /mydoc_submission_technical_rejection_criteria.html
-      output: web, pdf
-
-    - title: Ontology
-      url: /mydoc_submission_ontology.html
-      output: web, pdf
-
-    - title: Data Conversion
-      url: /mydoc_submission_data_conversion.html
-      output: web, pdf
-
-    - title: SHACL Shapes
-      url: /mydoc_submission_shacl_shapes.html
-      output: web, pdf
-
-    - title: Validation
-      url: /mydoc_submission_validation.html
-      output: web, pdf
-
   - title: SEND Data
     output: web
     folderitems:
@@ -102,6 +74,34 @@ entries:
       url: /mydoc_senddata_validation.html
       output: web, pdf
 
+
+  - title: Submission
+    output: web, pdf
+    folderitems:
+
+    - title: Structure and Components
+      url: /mydoc_submission_structure_and_components.html
+      output: web, pdf
+
+    - title: Technical Rejection Criteria
+      url: /mydoc_submission_technical_rejection_criteria.html
+      output: web, pdf
+
+    - title: Ontology
+      url: /mydoc_submission_ontology.html
+      output: web, pdf
+
+    - title: Data Conversion
+      url: /mydoc_submission_data_conversion.html
+      output: web, pdf
+
+    - title: SHACL Shapes
+      url: /mydoc_submission_shacl_shapes.html
+      output: web, pdf
+
+    - title: Validation
+      url: /mydoc_submission_validation.html
+      output: web, pdf
 
 
   - title: Resources
