@@ -46,21 +46,19 @@ entries:
     output: web
     folderitems:
 
+    - title: Data Conversion
+      url: /mydoc_senddata_data_conversion.html
+      output: web
+
     - title: SEND Rules
       url: /mydoc_senddata_send_rules.html
       output: web
 
-    - title: Data Sources
-      url: /mydoc_senddata_data_sources.html
-      output: web
 
     - title: Ontology
       url: /mydoc_senddata_ontology.html
       output: web
 
-    - title: Data Conversion
-      url: /mydoc_senddata_data_conversion.html
-      output: web
 
     - title: SHACL Shapes
       url: /mydoc_senddata_shacl_shapes.html

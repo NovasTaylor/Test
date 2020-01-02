@@ -9,11 +9,10 @@ folder: mydoc
 ## SHACL for SEND Rules
 The project team considered two alternative approaches to modeling the SEND Rules:
 
-1. Create SHACL shapes based on the [FDA Validator Rules Workbook](https://github.com/phuse-org/SENDConform/tree/master/doc/FDA/FDA-Validator-Rules.xlsx) and then apply those shapes to the data.  The advantage of this approach is that shapes can be constructed to provide error messages that match the result message in the FDA documentation. However, this approach results in the creation of many overlapping and redundant SHACL shapes and does not leverage the full power of SHACL validation.
+1. Create SHACL shapes based on the [FDA Validator Rules Workbook](https://github.com/phuse-org/SENDConform/tree/master/doc/FDA/FDA-Validator-Rules.xlsx) and then apply those shapes to the data.  The advantage of this approach is that shapes can be constructed to provide error messages that directly correspond to the result message in the FDA documentation. However, this approach results in the creation of many overlapping and redundant SHACL shapes and does not leverage the full power of SHACL validation.
 
 
-2. Create *modular* SHACL shapes based on the data schema that satisfy the [FDA Validator Rules Workbook](https://github.com/phuse-org/SENDConform/tree/master/doc/FDA/FDA-Validator-Rules.xlsx) and provide additional, comprehensive checks as re-usable modules. The disadvantage of this approach is the loss of the original Validator Messages. Checks can be tied back to the original rule identifiers by including references in the result messages. In the future, the validation report could be parsed and linked back to the original data to provide more user-friendly reporting.
-
+2. Create *modular* SHACL shapes based on the data schema that satisfy the [FDA Validator Rules Workbook](https://github.com/phuse-org/SENDConform/tree/master/doc/FDA/FDA-Validator-Rules.xlsx) and provide additional, comprehensive checks as re-usable modules. This approach makes it more difficult to tie validation result messages to the original FDA Validator Messages, but the rule identifiers can be included in the messaging. Future work could process the SHACL validation report to provide more user-friendly reporting.
 
 The second approach was chosen for the project.
 
