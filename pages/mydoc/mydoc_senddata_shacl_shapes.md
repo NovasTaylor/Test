@@ -1,14 +1,65 @@
 ---
 title: SHACL Shapes for SEND Data
-last_updated: 2019-12-20
-sidebar: mydoc_sidebar
+last_updated: 2020-01-02
 permalink: mydoc_senddata_shacl_shapes.html
+sidebar: mydoc_sidebar
 folder: mydoc
 ---
 
-## Introduction 
+## Introduction
 
 <font class='toBeAdded'>Content to be added...</font>
+## SHACL Constraints
+The SHACL shapes used in this project are available here:
+* AnimalSubjectShape  [SHACL/CJ16050Constraints/SHACL-AnimalSubject.TTL](https://github.com/phuse-org/SENDConform/blob/master/SHACL/CJ16050Constraints/SHACL-AnimalSubject.TTL).
+
+
+## SHACL for SEND Rules
+The project team considered two alternative approaches to modeling the SEND Rules:
+
+1. Create SHACL shapes based on the [FDA Validator Rules Workbook](https://github.com/phuse-org/SENDConform/tree/master/doc/FDA/FDA-Validator-Rules.xlsx) and then apply those shapes to the data.  The advantage of this approach is that shapes can be constructed to provide error messages that match the result message in the FDA documentation. However, this approach results in the creation of many overlapping and redundant SHACL shapes and does not leverage the full power of SHACL validation.
+
+
+2. Create *modular* SHACL shapes based on the data schema that satisfy the [FDA Validator Rules Workbook](https://github.com/phuse-org/SENDConform/tree/master/doc/FDA/FDA-Validator-Rules.xlsx) and provide additional, comprehensive checks as re-usable modules. The disadvantage of this approach is the loss of the original Validator Messages. Checks can be tied back to the original rule identifiers by including references in the result messages. In the future, the validation report could be parsed and linked back to the original data to provide more user-friendly reporting.
+
+
+The second approach was chosen for the project.
+
+Not all the rules for the selected DM and TS domains are modeled. Some rules cross multiple studies (example: identifiers that must be unique across multiple trials) and can only be evaluated within the context of the single-study in the prototype. Other rules cross multiple domains that are not included in initial development and may be reconsidered as project scope expands to include additional domains.
+
+DM was chosen for initial development and the list of relevant rules was selected from the [FDA Validator Rules Workbook](https://github.com/phuse-org/SENDConform/tree/master/doc/FDA/FDA-Validator-Rules.xlsx)
+by filtering exclusively on the <font class="emph">DM domain for SEND 3.0</font>. This resulted in a list of *19 rules* specific to the DM domain. Of these, only 14 are independent of other domains. Additionally, Rule SD1020 is dependent on the SEND ontology and may be added at a later time.
+
+**Table 1. Rules Exclusive to DM Domain**
+
+Domain |Rule   |Category | SHACL Dev Status| Reason for Exclusion
+---|-------|-------  | ------ | -------------------
+DM | SD0083 | usubjid | [available](SHACL-AnimalSubject-Details.md) |
+DM | SD1001 | subjid  | [available](SHACL-AnimalSubject-Details.md) |
+DM | SD1002 | interval| [available](SHACL-AnimalSubject-ReferenceInterval-Details.md) |
+DM | SD0088 | date    | <font class='development'>development</font> |
+DM | SD0087 | date    | <font class='development'>development</font> |
+DM | SD0084 | age     | [available](SHACL-AnimalSubject-Age-Details.md) |
+DM | SD1121 | age     | planned |
+DM | SD1129 | age     | planned |
+DM | SD2019 | age     | <font class='restrict'>excluded</font> | AGETXT (age range) not in source data
+DM | SD2020 | age     | <font class='restrict'>excluded</font> |
+DM | SD2021 | age     | planned |
+DM | SD2022 | age     | planned |
+DM | SD2023 | age     | <font class='restrict'>excluded</font> | Birthdate (BRTHTDTC) not present in source data
+DM | SD1259 | Set code    | planned |
+DM | SD1020 | dataset     | ?      | Requires link to SEND Ontology. May be added.
+DM | SD0069 | disposition | <font class='restrict'>excluded</font> | requires DS dataset
+DM | SE2311 | Set code    | <font class='restrict'>excluded</font> | Requires TX dataset
+DM | SD0071 | screen fail | <font class='restrict'>excluded</font> | requires TA dataset
+DM | SD0066 | arm         | <font class='restrict'>excluded</font> | requires TA dataset
+
+
+## Reusable Shapes
+
+The project defines a number of basic shapes that re-use core components for data validation. Follow the links below for details. The list will continue to grow as more data and shapes are added.
+
+* [AnimalSubjectShape](SHACL-AnimalSubject-Details.md)
 
 ## Animal Subject Shape
 The Animal Subject IRI `:Animal_xxx` is a natural starting point for developing rules based on the Demographics domain because each row in the source DM data contains values for an individual Animal Subject. SHACL shapes are created with reuse in mind, as reflected in both the structure and naming conventions. Where practical, shapes are named using a description of their function plus the word `Shape` followed by a dash and then an abbreviated name of the class or entity they act upon. Examples:
@@ -41,10 +92,10 @@ cj16050:Animal_037c2fdc
     study:hasUniqueSubjectID   cj16050:UniqueSubjectIdentifier_CJ16050_00M01 ;
     study:hasSubjectID         cj16050:SubjectIdentifier_00M01 ;
     study:hasReferenceInterval cj16050:Interval_037c2fdc ;
-    study:memberOf             cjprot:Set_00, 
+    study:memberOf             cjprot:Set_00,
                                code:Species_Rat ;
     study:participatesIn       cj16050:SexDataCollection_037c2fdc ,
-                               cj16050:AgeDataCollection_037c2fdc, 
+                               cj16050:AgeDataCollection_037c2fdc,
                                cj16050:Randomization_037c2fdc .
 </pre>
 <br/>
@@ -65,7 +116,7 @@ study:AnimalSubjectShape
   sh:property    study:hasStartLEEndShape-Interval ;     # Rule SD1002
   sh:property    study:hasMinInclusive0Shape-Age ;       # Rule SD0084
 
-  
+
   <font class='infoOmitted'>... more property shapes will be added as they are developed</font>
 </pre>
 
@@ -96,11 +147,11 @@ Identifiers USUBJID, SUBJID
 
 <a name='ruleSD0083'></a>
 
-***Figure 1*** shows the connections from the Animal Subject IRI to the USUBJID and SUBJID IRI values. 
+***Figure 1*** shows the connections from the Animal Subject IRI to the USUBJID and SUBJID IRI values.
 
 <a name='figure1'/>
   <img src="images/AnimalSubjectStructure.PNG"/>
-  
+
   ***Figure 1: Animal Subject Node to ID Values***
 
 ### USUBJID : FDA Rule SD0083
@@ -110,7 +161,7 @@ The spreadsheet [FDA-Validator-Rules.xlsx](https://github.com/phuse-org/SENDConf
 
 FDA Validator Rule ID | FDA Validator Message | Business or Conformance Rule Validated | FDA Validator Rule  
 ------|-------------------|--------------------------|-----------------------------
-**SD0083** |Duplicate USUBJID | Identifier used to uniquely identify a subject across all studies| The value of Unique Subject Identifier (USUBJID) variable must be unique for each subject **across all trials* in the submission.** 
+**SD0083** |Duplicate USUBJID | Identifier used to uniquely identify a subject across all studies| The value of Unique Subject Identifier (USUBJID) variable must be unique for each subject **across all trials* in the submission.**
 
 \* *Because the prototype is based on data from a single trial, Rule SD0083 is only evaluated within the context of a single study.*
 
@@ -148,19 +199,19 @@ Animal Subject 00M01 illustrates compliant data with a single USUBJID value.
     a                        study:AnimalSubject ;
     skos:prefLabel           "Animal 00M01"^^xsd:string ;
     <font class='goodData'>study:hasUniqueSubjectID cj16050:UniqueSubjectIdentifier_CJ16050_00M01 </font> ;
-  <font class='infoOmitted'>...</font> 
+  <font class='infoOmitted'>...</font>
 </pre>
 <br/>
 
-The SHACL shape `study:hasMin1Max1Shape-USubjID` evaluates AnimalSubject via its attachment to the parent `study:AnimalSubjectShape`. It evaluates the path `study:hasUniqueSubjectID` from the targetClass to determine if one and only one value of USUBJID IRI is present. 
+The SHACL shape `study:hasMin1Max1Shape-USubjID` evaluates AnimalSubject via its attachment to the parent `study:AnimalSubjectShape`. It evaluates the path `study:hasUniqueSubjectID` from the targetClass to determine if one and only one value of USUBJID IRI is present.
 
 <pre class='shacl'>
 study:AnimalSubjectShape
   a              sh:NodeShape ;
   sh:targetClass study:AnimalSubject
   <font class='nodeBold'>sh:property    study:hasMin1Max1Shape-USubjID </font> ;       
- 
- <font class='infoOmitted'>...</font> 
+
+ <font class='infoOmitted'>...</font>
 
 # Unique Subject ID (USUBJID)
 study:<font class='nodeBold'>hasMin1Max1Shape-USubjID </font>
@@ -174,26 +225,26 @@ study:<font class='nodeBold'>hasMin1Max1Shape-USubjID </font>
 </pre>
 <br/>
 
-Test Case 1 : Animal Subject Assigned Two USUBJID values 
+Test Case 1 : Animal Subject Assigned Two USUBJID values
 
-Test data for Animal Subject 99T11 (subject URI Animal_6204e90c) shows *two* USUBJID values: 
+Test data for Animal Subject 99T11 (subject URI Animal_6204e90c) shows *two* USUBJID values:
 <pre class='data'>
   cj16050:Animal_6204e90c
     a                        study:AnimalSubject ;
     skos:prefLabel           "Animal 99T11"^^xsd:string ;
     study:hasUniqueSubjectID cj16050:<font class='error'>UniqueSubjectIdentifier_CJ16050-99T11B</font>,
                              cj16050:<font class='error'>UniqueSubjectIdentifier_CJ16050_99T11</font> ;
-  <font class='infoOmitted'>...</font> 
+  <font class='infoOmitted'>...</font>
 </pre>
 
 Violation of Rule Component 1 as detected by the `sh:maxCount` constraint:
 
 <pre class='shacl'>
-  <font class='infoOmitted'>...</font> 
+  <font class='infoOmitted'>...</font>
   <font class="nodeBold">sh:path study:hasUniqueSubjectID</font> ;
   sh:minCount  1 ;
   <font class="nodeBold">sh:maxCount  1 </font>
-  <font class='infoOmitted'>...</font> 
+  <font class='infoOmitted'>...</font>
 </pre>
 
 The Report correctly identifies AnimalSubject Animal_6204e90c as having more than one USUBJID value, violating the MaxConstraintComponent of FDA Rule SD0083.
@@ -231,7 +282,7 @@ Verify
 
 SPARQL independently verifies `Animal_6204e90c` as having two USUBJID values. File: [/SPARQL/USUBJID-RC1RC2-TC1-Verify.rq](https://github.com/phuse-org/SENDConform/blob/master/SPARQL/USUBJID-RC1RC2-TC1-Verify.rq)
 <pre class='sparql'>
- SELECT ?animalSubjectIRI ?animalLabel (COUNT(?usubjidIRI) AS ?total) 
+ SELECT ?animalSubjectIRI ?animalLabel (COUNT(?usubjidIRI) AS ?total)
   WHERE{
     ?animalSubjectIRI a                        study:AnimalSubject ;
                       study:hasUniqueSubjectID ?usubjidIRI ;
@@ -261,9 +312,9 @@ The AnimalSubject IRI `Animal_22218ae1` has no USUBJID (and no SUBJID).
     study:participatesIn cj16050:AgeDataCollection_22218ae1, cj16050:SexDataCollection_22218ae1 .
 </pre>
 
-The SHACL is identical to Test Case 1. 
+The SHACL is identical to Test Case 1.
 
-The Report correctly identifies AnimalSubject IRI `Animal_6204e90c` as violating the constraint, in this case missing USUBJID. 
+The Report correctly identifies AnimalSubject IRI `Animal_6204e90c` as violating the constraint, in this case missing USUBJID.
 <pre class='report'>
   a sh:ValidationResult ;                                                     
     sh:resultSeverity sh:Violation ;                                        
@@ -301,7 +352,7 @@ SPARQL independently confirms the report identifying `Animal_22218ae1c` as havin
 <pre class="sparql">
   SELECT ?animalIRI
   WHERE{
-    ?animalIRI a study:AnimalSubject . 
+    ?animalIRI a study:AnimalSubject .
     OPTIONAL{ ?animalIRI study:hasUniqueSubjectID ?usubjid . }
     FILTER(NOT EXISTS { ?animalIRI study:hasUniqueSubjectID ?usubjid. })
 }
@@ -325,7 +376,7 @@ cj16050:<font class='error'>Animal_22218ae1</font>
 
 Implicit in the definition of USUBJID and Rule SD003 is the fact that the identifier should be assigned to one and only one Animal Subject.
 
-In the test data, Animal Subjects Animal_252450f2 and Animal_2706cb1e have the same USUBJID values. 
+In the test data, Animal Subjects Animal_252450f2 and Animal_2706cb1e have the same USUBJID values.
 <pre class='data'>
 cj16050:<font class='nodeBold'>Animal_252450f2</font>
     a study:AnimalSubject ;
@@ -351,12 +402,12 @@ Method 1: **Identify USUBJIDs** assigned to multiple AnimalSubjects
 
 <div class='def'>
   <div class='def-header'>Description</div>
-  Targeting the Object of (<font class='code'>sh:targetObjectsOf</font>) the inverse of (<font class='code'>sh:inversePath</font>) the predicate <font class='code'>study:hasUniqueSubjectID</font> identifies USBUJID values that are assigned to more than one AnimalSubject. This test is the most informative when trying to quickly identify <i>duplicate USUBJID values</i>. 
+  Targeting the Object of (<font class='code'>sh:targetObjectsOf</font>) the inverse of (<font class='code'>sh:inversePath</font>) the predicate <font class='code'>study:hasUniqueSubjectID</font> identifies USBUJID values that are assigned to more than one AnimalSubject. This test is the most informative when trying to quickly identify <i>duplicate USUBJID values</i>.
 </div>
 
 SHACL Shape for Method 1: Identify duplicate USUBJID values. This shape is applied to all uses of the predicate `study:hasUniqueSubjectID`, allowing its use for both SEND and SDTM data sets when this predicate is present.  
 <pre class='shacl'>
-study:isUniqueShape-USubjID a sh:PropertyShape ; 
+study:isUniqueShape-USubjID a sh:PropertyShape ;
   <font class='nodeBold'>sh:targetObjectsOf study:hasUniqueSubjectID </font> ;
   sh:name            "uniqueUSubjid" ;
   sh:description     "A USUBJID must only be assigned to one Subject." ;
@@ -367,7 +418,7 @@ study:isUniqueShape-USubjID a sh:PropertyShape ;
   ] .
 </pre>
 <br/>
-A Report is not provided because Method 2 was chosen over Method 1 for the reasons described below. 
+A Report is not provided because Method 2 was chosen over Method 1 for the reasons described below.
 
 <br/>
 
@@ -392,10 +443,10 @@ Method 2 uses a property shape assigned to the `AnimalSubjectShape` and some mag
     sh:targetClass study:AnimalSubject
     sh:property    study:hasMin1Max1Shape-USubjID  ;       
     <font class='nodeBold'>sh:property    study:isUniqueShape-USubjID</font>
-    <font class='infoOmitted'>...</font> 
-   
+    <font class='infoOmitted'>...</font>
+
 <font class='nodeBold'>study:isUniqueShape-USubjID </font>
-  a  sh:PropertyShape ; 
+  a  sh:PropertyShape ;
     sh:name            "uniqueUSubjid" ;
     sh:description     "A USUBJID must only be assigned to one Subject." ;
     sh:message         "USUBJID assigned to more than one Subject. [SD0083]" ;
@@ -419,7 +470,7 @@ a sh:ValidationResult ;
   sh:resultSeverity sh:Violation
 
   <font class='infoOmitted'>...</font>
-  
+
 a sh:ValidationResult ;
   sh:sourceConstraintComponent sh:MaxCountConstraintComponent ;
   sh:focusNode cj16050:<font class='error'>Animal_2706cb1e</font> ;
@@ -429,7 +480,7 @@ a sh:ValidationResult ;
   ] ) ;
   sh:resultMessage "<font class='msg'>USUBJID assigned to more than one Subject. [SD0083]</font>" ;
   sh:resultSeverity sh:Violation ;
-  
+
   <font class='infoOmitted'>...</font>
 </pre>
 <br/>
@@ -466,9 +517,9 @@ Verify
 
 Independently verify `Animal_252450f2` and `Animal_2706cb1e` share the same USUBJID (and consequently the same label for the AnimalSubject and USUBJID). File: [/SPARQL/USUBJID-RC3-M2-Verify.rq](https://github.com/phuse-org/SENDConform/blob/master/USUBJID-RC3-M2-Verify.rq)
 <pre class='sparql'>
-  SELECT ?animalIRI ?usubjid 
+  SELECT ?animalIRI ?usubjid
   WHERE{
-    
+
     ?animalIRI  study:hasUniqueSubjectID ?usubjidIRI ;
                 skos:prefLabel           ?usubjid .
     ?animalIRI2  study:hasUniqueSubjectID ?usubjidIRI .
@@ -485,7 +536,7 @@ Independently verify `Animal_252450f2` and `Animal_2706cb1e` share the same USUB
 
 <br/>
 
---- 
+---
 <a name='ruleSD1001'></a>
 
 ##  **SUBJID** : FDA Rule SD1001
@@ -505,7 +556,7 @@ The Rule Components and corresponding SHACL shapes for SD1001 are similar to tho
 
 <a name='figure1'/>
   <img src="images/IntervalStructure.PNG"/>
-  
+
   ***Figure 1: Animal Subject Data Structure, SHACL Shapes, FDA Rules***
 
 The spreadsheet [FDA-Validator-Rules.xlsx](https://github.com/phuse-org/SENDConform/tree/master/doc/FDA/FDA-Validator-Rules.xlsx) defines Rule SD10002 for Reference Start Date (RFSTDTC) and Reference End Date (RFENDTC) as:
@@ -533,9 +584,9 @@ Familiarity with the data structure is necessary to explain the constraints and 
 
 <a name='figure1'/>
   <img src="images/RefIntervalStructureDateFail.PNG"/>
-  
+
   ***Figure 1: Reference Interval for Animal 99T1 (incomplete data)***
-  
+
 ## Translation into SHACL
 
 <!--- RULE COMPONENT 1 ------------------------------------------------------->
@@ -551,9 +602,9 @@ Familiarity with the data structure is necessary to explain the constraints and 
 
 <div class='def'>
   <div class='def-header'>Description</div>
-  Reference Start Date (RFSTDTC) and End Date (RFENDTC) must be in 
+  Reference Start Date (RFSTDTC) and End Date (RFENDTC) must be in
   <font class='emph'>date format</font>. The study in this example requires
-  <code>xsd:date</code>. Other studies may use <code>xsd:dateTime</code> or a combination of <code>xsd:date</code> 
+  <code>xsd:date</code>. Other studies may use <code>xsd:dateTime</code> or a combination of <code>xsd:date</code>
   and <code>xsd:dateTime</code>.
 </div>
 
@@ -580,7 +631,7 @@ cj16050:<font class='nodeBold'>Interval_68bab561</font>
   a                 study:ReferenceInterval ;
   time:hasBeginning cj16050:Date_2016-12-08 ;
   time:hasEnd       cj16050:<font class='nodeBold'>Date_7-DEC-16 </font> .
-       
+
 cj16050:<font class='nodeBold'>Date_7-DEC-16</font>
       a study:ReferenceEnd ;
       time:inXSDDate <font class='error'>"7-DEC-16"^^xsd:string</font> .
@@ -633,7 +684,7 @@ The Report identifies the dates "7-DEC-16"  and "6-DEC-16" (not shown above). Ex
 
 <pre class='sparql'>
   # RC1 : Find Subject with incorrect date format
-  SELECT ?animalSubjectIRI ?animalLabel ?date 
+  SELECT ?animalSubjectIRI ?animalLabel ?date
   WHERE{
     ?animalSubjectIRI a                          study:AnimalSubject ;
                       skos:prefLabel             ?animalLabel ;
@@ -676,7 +727,7 @@ SPARQL independently verifies the test case by finding the two dates that are in
   Animal Subjects should have one and only one Reference Interval IRI.
 </div>
 
-This check determines if the Animal Subject has one and only one Reference Interval IRI. While it is possible to have an Interval IRI with no start date and no end date (see [Data Conversion](DataConversion.md)), this rule component only evaluates the case of missing Reference Interval IRIs. Multiple start/end dates for a single subject are evaluated in [Rule Component 3](#rc3). 
+This check determines if the Animal Subject has one and only one Reference Interval IRI. While it is possible to have an Interval IRI with no start date and no end date (see [Data Conversion](DataConversion.md)), this rule component only evaluates the case of missing Reference Interval IRIs. Multiple start/end dates for a single subject are evaluated in [Rule Component 3](#rc3).
 
 Test data for Animal Subject 99T11 has no `study:hasReferenceInterval` .
 
@@ -727,7 +778,7 @@ study:hasMin1Max1Shape-Interval a sh:NodeShape ;
   sh:message     "Animal Subject does not have one Reference Interval IRI. [SD1002]" ;
   sh:minCount    1 ;
   sh:maxCount    1 .
-</pre> 
+</pre>
 <br/>
 
 
@@ -759,7 +810,7 @@ SPARQL identifies the reported IRI as belonging to AnimalSubject 99T11, also con
 
 ### Verify
 
-Verification identifies Animal Subject 99T11 with no Reference Interval. 
+Verification identifies Animal Subject 99T11 with no Reference Interval.
 
 <pre class='sparql'>
 # RC 2 : Verify: Number of reference intervals per subject
@@ -820,8 +871,8 @@ cj16050:<font class='nodeBold'>Interval_db3c6403</font>
   <font class='nodeBold'>time:hasBeginning cj16050:Date_2016-12-07 </font>.
 </pre>
 <br/>
- 
-The study ontology defines`study:ReferenceInterval` as a sub class of `study:EntityInterval`. 
+
+The study ontology defines`study:ReferenceInterval` as a sub class of `study:EntityInterval`.
 
 <pre class='owl'>
 <font class='nodeBold'>study:EntityInterval</font>
@@ -855,12 +906,12 @@ The study ontology defines`study:ReferenceInterval` as a sub class of `study:Ent
 All sub classes of `study:EntityInterval` must have a `time:hasBeginning` and `time:hasEnd`,  allowing the use of a single shape to evaluate following types of intervals when the ontology is loaded into the database:
 
 * <font class='nodeBold'>study:ReferenceInterval</font>
-* <font class='goodData'>study:LifeSpan</font> 
+* <font class='goodData'>study:LifeSpan</font>
 * <font class='goodData'>study:MedicalConditionalInterval</font>
 * <font class='goodData'>study:StudyParticipationInterval</font>
 
 The ontology facilitates the use of the shape in both pre-clinical (SEND) and clinical (SDTM) studies.  
- 
+
 The shape tests the following conditions:
 
 * Interval Start date for an Animal Subject has one and only one value.
@@ -886,7 +937,7 @@ study:hasMin1Max1Shape-StartEndDates a sh:NodeShape ;
     ]
  )
 .
-</pre> 
+</pre>
 <br>
 
 The report identifies the interval for Animal Subject 99T5 (`cj16050:Interval_db3c6403`) as violating the constraint.
@@ -904,7 +955,7 @@ The report identifies the interval for Animal Subject 99T5 (`cj16050:Interval_db
 SPARQL can trace the  reference interval from the report back to AnimalSubject 99T5, showing this individual is missing `rfendtc`.
 <pre class='sparql'>
 SELECT ?animalLabel  ?beginDate ?endDate
-WHERE{ 
+WHERE{
   ?animalSubjectIRI study:hasReferenceInterval cj16050:Interval_db3c6403 ;
                     skos:prefLabel    ?animalLabel .
 
@@ -912,7 +963,7 @@ WHERE{
      cj16050:Interval_db3c6403 time:hasBeginning ?beginIRI .
      ?beginIRI time:inXSDDate  ?beginDate .
    }
-   OPTIONAL{ 
+   OPTIONAL{
      cj16050:Interval_db3c6403 time:hasEnd ?endIRI .
      ?beginIRI time:inXSDDate  ?beginDate .
   }
@@ -921,21 +972,21 @@ WHERE{
 
 ### Verify
  The query below correctly lists the AnimalSubjects with start and end date data issues as 99T2, 99T5, 99T8, 99T9.
- 
- 
+
+
 <pre class='sparql'>
 ## RC 3: Verify : Pull all subject IDs that od not have one start and one End date
 SELECT ?animalLabel ?beginDate ?endDate (COUNT(?beginDate) AS ?numBeginDate)
        (COUNT(?endDate) AS ?numEndDate)
-WHERE{ 
+WHERE{
   ?animalSubjectIRI study:hasReferenceInterval ?intervalIRI ;
                     skos:prefLabel             ?animalLabel .
    OPTIONAL{
      ?intervalIRI time:hasBeginning ?beginIRI .
      ?beginIRI    time:inXSDDate    ?beginDate .
    }
-    
-   OPTIONAL{ 
+
+   OPTIONAL{
      ?intervalIRI time:hasEnd     ?endIRI .
      ?beginIRI    time:inXSDDate  ?endDate .
   }
@@ -959,7 +1010,7 @@ WHERE{
   <div class='def-header'>Description</div>
   Interval start date must be on or before end date. When the constraint is violated the report must display the <b>FDA Validator Message</b> "RFSTDTC is after RFENDTC"
 </div>
- 
+
 Referring back to [**Figure 1**](#figure1), the reference start and end dates are not directly attached to either an Animal Subject or that Subject's Reference Interval IRI. This indirect connection makes the comparison of the two date values more complex, so SHACL-SPARQL is used in place of SHACL-Core. The SPARQL query is written to find cases where the end date is NOT greater than or equal to the start date.
 Test data provides the following violations:
 
@@ -1034,7 +1085,7 @@ study:hasStartLEEndShape-Interval a sh:NodeShape ;
       FILTER  (! (?endDate >= ?beginDate ))
     }""" ;
 ] .
-</pre> 
+</pre>
 <br/>
 
 The report identifies the interval for Animal Subject 99T1 where End Date precedes Start Date.
@@ -1046,7 +1097,7 @@ The report identifies the interval for Animal Subject 99T1 where End Date preced
   sh:value <font class='error'>cj16050:Interval_184f16eb</font>        ]
   sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;
   sh:resultSeverity sh:Violation ;
-  sh:focusNode cj16050:Interval_184f16eb 
+  sh:focusNode cj16050:Interval_184f16eb
 </pre>
 
 SPARQL traces the interval back to the AnimalSubject and date values.
@@ -1059,7 +1110,7 @@ WHERE {
 
   ?intervalIRI time:hasBeginning  ?beginIRI .
   ?beginIRI    time:inXSDDate     ?beginDate .
-      
+
   ?intervalIRI time:hasEnd        ?endIRI .
   ?endIRI    time:inXSDDate       ?endDate .
   FILTER  (! (?endDate >= ?beginDate ))
@@ -1069,18 +1120,18 @@ WHERE {
 
 ### Verify
 
-Verification confirms Animal Subject 99T1 and 99T2 with End Data preceding Start Date. Note how when the start date is a string it also flags AnimalSubject 99T10 as a violator. The SPARQL statement is very similar to the query used in the SHACL-SPARQL constraint. 
+Verification confirms Animal Subject 99T1 and 99T2 with End Data preceding Start Date. Note how when the start date is a string it also flags AnimalSubject 99T10 as a violator. The SPARQL statement is very similar to the query used in the SHACL-SPARQL constraint.
 
 <pre class='sparql'>
-  # RC4 : Verify : 
+  # RC4 : Verify :
   SELECT ?animalLabel (?beginDate AS ?intervalStart) (?endDate AS ?intervalEnd)
   WHERE {
     ?animalSubjectIRI study:hasReferenceInterval ?intervalIRI ;
                       skos:prefLabel             ?animalLabel .
-  
+
     ?intervalIRI time:hasBeginning  ?beginIRI .
     ?beginIRI    time:inXSDDate     ?beginDate .
-        
+
     ?intervalIRI time:hasEnd        ?endIRI .
     ?endIRI    time:inXSDDate       ?endDate .
     FILTER  (! (?endDate >= ?beginDate ))
@@ -1096,7 +1147,7 @@ Verification confirms Animal Subject 99T1 and 99T2 with End Data preceding Start
 </pre>
 
 
-Animal Subject Shape - Demographics Domain 
+Animal Subject Shape - Demographics Domain
 ==================================
 
 ## **Age** : Rules
@@ -1105,10 +1156,10 @@ Animal Subject Shape - Demographics Domain
 
 <a name='figure1'/>
   <img src="images/AgeStructure.PNG"/>
-  
+
   ***Figure 1: Animal Subject Data Structure for Age***
 
-The spreadsheet [FDA-Validator-Rules.xlsx](https://github.com/phuse-org/SENDConform/tree/master/doc/FDA/FDA-Validator-Rules.xlsx) defines numerous rules associated with Age in the DM domain. This project defines only a subset of these rules as SHACL Shapes. For example, the rule SD2019 "Invalid value for AGETXT" is not applicable because the example study collects AGE (numeric) and not AGETXT (age range as a string). 
+The spreadsheet [FDA-Validator-Rules.xlsx](https://github.com/phuse-org/SENDConform/tree/master/doc/FDA/FDA-Validator-Rules.xlsx) defines numerous rules associated with Age in the DM domain. This project defines only a subset of these rules as SHACL Shapes. For example, the rule SD2019 "Invalid value for AGETXT" is not applicable because the example study collects AGE (numeric) and not AGETXT (age range as a string).
 
 The following rules are defined on this page:
 
@@ -1131,7 +1182,7 @@ FDA Validator Rule ID | FDA Validator Message | Business or Conformance Rule Val
 
 Refer back to **Figure 1** to see how age is indirectly associated with an AnimalSubject via a study:participatesIn predicate that leads to an outcome IRI that in turn contains the age value and units. Most subjects in the study are the same age (8 Weeks), resulting in a small number of tests in outcome IRIs instead of traditional tests on each age value associated with an Animal Subject.
 
-  
+
 # Translation into SHACL
 
 <!--- RULE COMPONENT 1 ------------------------------------------------------->
@@ -1146,21 +1197,21 @@ Refer back to **Figure 1** to see how age is indirectly associated with an Anima
 
 <div class='def'>
   <div class='def-header'>Description</div>
-  The Age value must be greater than or equal to 0. While this study has not age=0, the check is constructed to satisfy the FDA rule. 
+  The Age value must be greater than or equal to 0. While this study has not age=0, the check is constructed to satisfy the FDA rule.
 </div>
 
 
-The age for Animal Subject 99T1 was set to -10 for testing. 
+The age for Animal Subject 99T1 was set to -10 for testing.
 <pre class='data'>
   cj16050:Animal_184f16eb
     a                    study:AnimalSubject ;
     study:participatesIn cj16050:<font class='nodeBold'>AgeDataCollection_184f16eb</font>,
   <font class='infoOmitted'>...</font>
-  
+
   cj16050:<font class='nodeBold'>AgeDataCollection_184f16eb</font>
     a            code:AgeDataCollection ;
     code:outcome cj16050:<font class='nodeBold'>Age_-10_WEEKS </font>.
-  
+
   cj16050:<font class='nodeBold'>Age_-10_WEEKS</font>
     a                     study:Age ;
     time:hasXSDDuration  "P56D"^^xsd:duration ;
@@ -1205,10 +1256,10 @@ The report correctly identifies the value '-10'.
 <br/>
 The report lists the Age value and Age outcome IRI, but not the AnimalSubject associated with the offending value. SPARQL can be used to identify the Animal Subject using the Age Outcome IRI identified in the report.  Source file: [/SPARQL/Animal-Age-LT0.rq](https://github.com/phuse-org/SENDConform/blob/master/SPARQL/Animal-Age-LT0.rq)
 <pre class='sparql'>
-  SELECT ?animalLabel 
+  SELECT ?animalLabel
   WHERE{
     ?ageDataCollIRI   code:outcome cj16050:<font class='nodeBold'>Age_-10_WEEKS </font>.
-  
+
     ?AnimalSubjectIRI study:participatesIn ?ageDataCollIRI ;
                       skos:prefLabel       ?animalLabel .
   }

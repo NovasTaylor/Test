@@ -28,14 +28,10 @@ entries:
       output: web, pdf
       type: homepage
 
-    - title: Scope and Conventions
-      url: /mydoc_intro_scope_and_conventions.html
+    - title: Conventions
+      url: /mydoc_intro_conventions.html
       output: web, pdf
       type: homepage
-
-    - title: Project Repository Structure
-      url: /mydoc_intro_site_structure.html
-      output: web, pdf
 
     - title: Graph Data and Validation
       url: /mydoc_intro_graph_data_and_validation.html
@@ -104,7 +100,7 @@ entries:
       output: web, pdf
 
 
-  - title: Resources
+  - title: References and Resources
     output: web
     folderitems:
 
@@ -115,3 +111,7 @@ entries:
     - title: About This Site
       url: /mydoc_references_about_this_site.html
       output: web
+
+    - title: Project Repository Structure
+      url: /mydoc_intro_site_structure.html
+      output: web, pdf

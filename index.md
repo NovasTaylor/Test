@@ -7,15 +7,11 @@ sidebar: mydoc_sidebar
 permalink: index.html
 ---
 
-# Overview 
-This project is a proof of concept investigating the use of Linked Data for submission and validation of non-clinical study data 
-submitted to the FDA. The work is comprised of two intiatives:
+# Overview
+This project is a proof of concept investigating the use of Linked Data for validation and submission of non-clinical study data submitted to the FDA. The work is comprised of two initiatives:
 
-1. Modeling and validating nonclinical (SEND) data
+1. Modeling and validating nonclinical ([https://www.cdisc.org/standards/foundational/send](SEND)) data
 1. FDA Submission Criteria
 
-# Goals
-By modeling data validation checks and submission rules using Linked Data, sponsors can create data of exceptionally high quality. The same data validation rules 
-used for data collection can be re-used for review prior to submission. When the same rules are used by both sponsor and regulatory agency,
-the risk of a rejected submission is lowered.
-
+When both study sponsors and regulatory agencies use common data models and rules across the entire data lifecycle, data quality is greatly improved and the
+submission and approval process is more efficient.
