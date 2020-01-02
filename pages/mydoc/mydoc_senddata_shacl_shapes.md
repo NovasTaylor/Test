@@ -7,53 +7,13 @@ folder: mydoc
 ---
 
 ## Introduction
-The project defines a number of basic shapes that re-use core components for data validation. Follow the links below for details. The list will continue to grow as more data and shapes are added.
-
-## SHACL Constraints
-The SHACL shapes used in this project are available here:
-* AnimalSubjectShape  [SHACL/CJ16050Constraints/SHACL-AnimalSubject.TTL](https://github.com/phuse-org/SENDConform/blob/master/SHACL/CJ16050Constraints/SHACL-AnimalSubject.TTL).
-
-# SHACL Constraints
-
-A detailed description of SHACL syntax is beyond the scope of this document. Please refer to the [SHACL Introduction](SHACL-Intro.md) page for a list of resources.
-
-The SHACL shapes used in this project are available here:
-* AnimalSubjectShape  [SHACL/CJ16050Constraints/SHACL-AnimalSubject.TTL](https://github.com/phuse-org/SENDConform/blob/master/SHACL/CJ16050Constraints/SHACL-AnimalSubject.TTL).
-
-The proof of concept starts with the Demographics (<b>DM</b>) and Trial Summary (<b>TS</b>) domains. Additional domains will be added as the project progresses. Data was copied from the PHUSE Scripts repository [SEND subfolder](https://github.com/phuse-org/phuse-scripts/tree/master/data/send) and to our repository at: /SENDConform/data/studies/<font class="parameter">Study Name</font>  .
-
-The easiest way to convert this source data to RDF would be to read in the row-by-column source data and convert it directly to RDF, using column names to identity the types of entities represented by the values in each cell, with the rows representing individuals. This is not the approach taken in this project. Data is re-formed to match an ontology that contains the types of entities and their relationships in the trial, based on knowledge of both the data and the clinical trial process.
-
-Two alternate methods are provided for the data conversion process. In method one, R scripts read the source SAS XPT file and convert it to TTL for import into a triplestore. The same data conversion R scripts simultaneously create .CSV files to support a second method of importing data into a Stardog triplestore [using Stardog Mapping Syntax (SMS)](DataMapping-StardogSMS.md). ***CAUTION: The .CSV files do not contain the full set of data for evaluating the test cases.***
-
-Additional data conversion methods using SAS or Python may be developed, time and expertise permitting.
-
-
-
-## SHACL for SEND Rules
-The project team considered two alternative approaches to modeling the SEND Rules:
-
-1. Create SHACL shapes based on the [FDA Validator Rules Workbook](https://github.com/phuse-org/SENDConform/tree/master/doc/FDA/FDA-Validator-Rules.xlsx) and then apply those shapes to the data.  The advantage of this approach is that shapes can be constructed to provide error messages that match the result message in the FDA documentation. However, this approach results in the creation of many overlapping and redundant SHACL shapes and does not leverage the full power of SHACL validation.
-
-
-2. Create *modular* SHACL shapes based on the data schema that satisfy the [FDA Validator Rules Workbook](https://github.com/phuse-org/SENDConform/tree/master/doc/FDA/FDA-Validator-Rules.xlsx) and provide additional, comprehensive checks as re-usable modules. The disadvantage of this approach is the loss of the original Validator Messages. Checks can be tied back to the original rule identifiers by including references in the result messages. In the future, the validation report could be parsed and linked back to the original data to provide more user-friendly reporting.
-
-
-The second approach was chosen for the project.
-
-Not all the rules for the selected DM and TS domains are modeled. Some rules cross multiple studies (example: identifiers that must be unique across multiple trials) and can only be evaluated within the context of the single-study in the prototype. Other rules cross multiple domains that are not included in initial development and may be reconsidered as project scope expands to include additional domains.
-
-DM was chosen for initial development and the list of relevant rules was selected from the [FDA Validator Rules Workbook](https://github.com/phuse-org/SENDConform/tree/master/doc/FDA/FDA-Validator-Rules.xlsx)
-by filtering exclusively on the <font class="emph">DM domain for SEND 3.0</font>. This resulted in a list of *19 rules* specific to the DM domain. Of these, only 14 are independent of other domains. Additionally, Rule SD1020 is dependent on the SEND ontology and may be added at a later time.
-
-## Reusable Shapes
-
-The project defines a number of basic shapes that re-use core components for data validation. Follow the links below for details. The list will continue to grow as more data and shapes are added.
-
-* [AnimalSubjectShape](SHACL-AnimalSubject-Details.md)
+The project strives to define a core set of re-usable, basic shapes for use in a variety of data validation scenarios spanning the data lifecycle from data collection through to submission and reporting.  The first shapes to be defined by the project come from the Demographics (DM) domain, where the AnimalSubject shape is a primary focus.
 
 ## Animal Subject Shape
-The Animal Subject IRI `:Animal_xxx` is a natural starting point for developing rules based on the Demographics domain because each row in the source DM data contains values for an individual Animal Subject. SHACL shapes are created with reuse in mind, as reflected in both the structure and naming conventions. Where practical, shapes are named using a description of their function plus the word `Shape` followed by a dash and then an abbreviated name of the class or entity they act upon. Examples:
+
+* AnimalSubjectShape  [SHACL/CJ16050Constraints/SHACL-AnimalSubject.TTL](https://github.com/phuse-org/SENDConform/blob/master/SHACL/CJ16050Constraints/SHACL-AnimalSubject.TTL).
+
+The Animal Subject IRI <code>:Animal_<font class='parameter'>xxx</font></code> is a natural starting point for developing rules based on the Demographics domain because each row in the source DM data contains values for an individual Animal Subject. SHACL shapes are created with reuse in mind, as reflected in both the structure and naming conventions. Where practical, shapes are named using a description of their function plus the word `Shape` followed by a dash and then an abbreviated name of the class or entity they act upon. Examples:
 
 * `hasMin1Max1Shape-USubjID` - validates that each Animal Subject has a minimum of one and maximum of one USUBJID value.  
 * `isUniqueShape-USubjID`    - validates the *uniqueness* of USUBJID values. A USUBJID cannot be assigned to more than one Animal Subject.
@@ -65,9 +25,10 @@ The `sh:message` property provides meaningful messages about violations when the
 Example:  <code>sh:message "Subject --> USUBJID violation. <b>[SD0083]</b>" ;</code>
 
 A shape is created to define the constraints attached to the Animal Subject IRI. Each individual constraint is described in the sections that follow.
+
 <div class='ruleState'>
   <div class='ruleState-header'>Rule Statement</div>
-   One <code>sh:property</code> for each type of <code>predicate</code>---> <code>object</code> relation attached directly to the AnimalSubject IRI.
+   One <code>sh:property</code> for each type of <code>predicate</code> ----> <code>object</code> relation attached directly to the AnimalSubject IRI.
 </div>
 
 <div class='def'>
@@ -111,7 +72,7 @@ study:AnimalSubjectShape
   <font class='infoOmitted'>... more property shapes will be added as they are developed</font>
 </pre>
 
-If an ontology defines `study:AnimalSubject` as a subclass of `study:Subject`, then shapes could use the `sh:targetClass` `study:Subject` (assuming common constraints for both classes.) If a  clinical trial were to define a `study:HumanStudySubject` as a subclass of `study:Subject`, the same constraints could be used for both pre-clinical and clinical data validation. This work focusses on SEND, so the target class `study:AnimalSubject` is specified for simplicity.
+If an ontology defines `study:AnimalSubject` as a subclass of `study:Subject`, then shapes could use the `sh:targetClass` `study:Subject` (assuming common constraints for both classes.) If a clinical trial on human study subjects were to define a `study:HumanStudySubject` as a subclass of `study:Subject`, the same constraints could be used for both pre-clinical (non-human animals) and clinical (human) data validation. This work focusses on SEND, so the target class `study:AnimalSubject` is specified for simplicity.
 
 <pre class='owl'>
 <font class='nodeBold'>study:Subject</font>
@@ -1278,7 +1239,7 @@ FDA Validator Rule ID | FDA Validator Message | Business or Conformance Rule Val
 ------|-------------------|--------------------------|-----------------------------
 **SDxxxx** | |  | **xxxxxx**
 
-
+<br><br><br>
 <font class='toBeAdded'>Add: Additional DM Rules...</font>
 
 {% include links.html %}

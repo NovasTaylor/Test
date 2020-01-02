@@ -23,7 +23,9 @@ The /csv folder contains data in comma-delimited format for ease of viewing the 
     SENDConform/data/studies/<font class="parameter">Study Name</font>/csv
 </pre>
 
-The Demographics (**DM**) and Trial Summary (**TS**) domains from the study ID <font class='emph'>CJ16050</font> "RE Function in Rats" [/data/studies/RE Function in Rats](https://github.com/phuse-org/SENDConform/tree/master/data/studies/RE%20Function%20in%20Rats) is used for initial development and testing.  Original XPT is converted to Terse Triple Language (TTL) format using the driver script [r/driver.R](https://github.com/phuse-org/SENDConform/blob/master/r/driver.R).
+The Demographics (**DM**) and Trial Summary (**TS**) domains from the study ID <font class='emph'>CJ16050</font> "RE Function in Rats" [/data/studies/RE Function in Rats](https://github.com/phuse-org/SENDConform/tree/master/data/studies/RE%20Function%20in%20Rats) is used for initial development and testing.  Original XPT is converted to Terse Triple Language (TTL) format using the driver script [r/driver.R](https://github.com/phuse-org/SENDConform/blob/master/r/driver.R). Additional data conversion methods using SAS or Python may be developed, time and expertise permitting.
+
+The easiest approach is to convert the row-by-column source data to RDF using column names to identity the types of entities, rows as individuals, and each cells as values for that individual. The superior approach taken  in this project is to re-formed the data to  match ontologies that describe the types of entities and their relationships in the study, based on knowledge of both the data and the clinical trial process.
 
 The converted RDF data used for developing SHACL is available here: [SHACL/CJ16050Constraints/DM-CJ16050-R.TTL](https://github.com/phuse-org/SENDConform/blob/master/SHACL/CJ16050Constraints/DM-CJ16050-R.TTL)
 
@@ -45,7 +47,7 @@ However, the use of `subjid` or `usubjid` is fraught with problems. Consider cas
 
 * A row of data is accidentally duplicated, a condition that could go undetected when converting the data to RDF.
 
-A solution is to create IRIs for critical components like **Animal Subject** and **Reference Interval** that are independent from values in the source data. For the purpose of this prototype, an SHA-1 hash of a randomly generated value (with a known seed value) is used to create select IRIs where missing, duplicate, or partial data would be problematic. The long hash value is truncated to eight characters for easier reference and discussion in this prototype.
+A solution is to create IRIs for critical components like **Animal Subject** and **Reference Interval** that are independent from values in the source data. For the purpose of this prototype, an SHA-1 hash of a randomly generated value (with a known seed value) is used to create select IRIs where missing, duplicate, or partial data would be problematic. The long hash value is truncated to eight characters for ease of reference and discussion in this prototype.
 
 When this method of IRI generation is followed:
 
