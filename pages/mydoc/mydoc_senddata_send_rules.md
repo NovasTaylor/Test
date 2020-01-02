@@ -1,17 +1,16 @@
 ---
 title: SEND Rules
-last_updated: 2020-12-24
+last_updated: 2020-01-02
 sidebar: mydoc_sidebar
 permalink: mydoc_senddata_send_rules.html
 folder: mydoc
 ---
 
-<font class='toBeAdded'>To add: Source and description of the SEND rules (high level)</font>
-## SHACL for SEND Rules 
+## SHACL for SEND Rules
 The project team considered two alternative approaches to modeling the SEND Rules:
 
 1. Create SHACL shapes based on the [FDA Validator Rules Workbook](https://github.com/phuse-org/SENDConform/tree/master/doc/FDA/FDA-Validator-Rules.xlsx) and then apply those shapes to the data.  The advantage of this approach is that shapes can be constructed to provide error messages that match the result message in the FDA documentation. However, this approach results in the creation of many overlapping and redundant SHACL shapes and does not leverage the full power of SHACL validation.
-   
+
 
 2. Create *modular* SHACL shapes based on the data schema that satisfy the [FDA Validator Rules Workbook](https://github.com/phuse-org/SENDConform/tree/master/doc/FDA/FDA-Validator-Rules.xlsx) and provide additional, comprehensive checks as re-usable modules. The disadvantage of this approach is the loss of the original Validator Messages. Checks can be tied back to the original rule identifiers by including references in the result messages. In the future, the validation report could be parsed and linked back to the original data to provide more user-friendly reporting.
 
@@ -53,54 +52,3 @@ DM | SD0066 | arm         | <font class='restrict'>excluded</font> | requires TA
 The project defines a number of basic shapes that re-use core components for data validation. Follow the links below for details. The list will continue to grow as more data and shapes are added.
 
 * [AnimalSubjectShape](SHACL-AnimalSubject-Details.md)
-
-
-# Content Conventions
-
- Color coding provides a guide to the content describing the shapes.
-
-<div class='ruleState'>
-  <div class='ruleState-header'>Rule Statement</div>
-  Grey boxes contain brief syntax / pseudo code for the rule.
-</div>
-
-<div class='def'>
-  <div class='def-header'>Description</div>
-  Blue boxes contain a textual description of the rule.
-</div>
- 
-<pre class="data">
-   This box contains a subset of data that serves as input to test the shapes graph. 
-   Intentional error values are <font class='error'>highlighted in red.</font>
-   Data not relevant to the discussion is and omitted is shown as <font class='infoOmitted'>...</font>
-</pre>
-
-<pre class="sms">
-   Stardog Mapping Syntax, used to import CSV files to the database. 
-</pre>
-
-
-<pre class="owl">
-   Contains an excerpt from an ontology that applies to the rule being described.
-   Optional. Not all rules rely on the project ontologies. 
-</pre>
-
-
-<pre class="shacl">
-  Contains a representation of the shapes graph (in full or in part). 
-</pre> 
-
-<pre class="report">
-  Excerpts from the SHACL Validation Report (the output results graph.)
-</pre>
-
-<pre class="sparql">
-  SPARQL commands to retrieve additional information based on values identified in the report or to validate the validation report.
-</pre>
-
-<pre class="queryResult">
-  Results of a SPARQL query for tracing information from the Report back to additional information or to verify 
-  the SHACL constraint is catching all test cases. 
-</pre>
-
-
