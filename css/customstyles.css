@@ -107,13 +107,22 @@
 /* A section header so not show up in TOC at top of page when using
   Jekyll blue-theme */
 .ruleComponent{
-  font-weight: bold;
-  font-size: 1.2em;
+  padding-top: 60px;
+  margin-top: -40px;
+  font-weight: normal;
+  font-size: 130%;
   color: #015CAE;
 }
 .subject{
   color: #486118;     /* dark green */
   font-weight: bold;
+}
+
+.verify{
+  font-weight:normal;
+  font-size: 110%;
+  font-style:italic;
+  color: black;
 }
 
 /*---------------------------------------------------------------------------*/

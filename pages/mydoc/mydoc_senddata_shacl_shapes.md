@@ -7,7 +7,7 @@ folder: mydoc
 ---
 
 ## Introduction
-The project strives to define a core set of re-usable, basic shapes for use in a variety of data validation scenarios spanning the data lifecycle from data collection through to submission and reporting.  The first shapes to be defined by the project come from the Demographics (DM) domain, where the AnimalSubject shape is a primary focus.
+The project strives to define a core set of re-usable, hierarchical shapes for use in a variety of data validation scenarios spanning the data lifecycle from data collection through to submission and reporting.  The first shapes to be defined by the project come from the Demographics (DM) domain, where the AnimalSubject shape is a primary focus.
 
 ## Animal Subject Shape
 
@@ -104,7 +104,7 @@ study:Animal
 
   ***Figure 1: Animal Subject Node to ID Values***
 
-### **USUBJID** <a name='ruleSD0083'></a>
+### *USUBJID* <a name='ruleSD0083'></a>
 
 <font class='ruleComponent'>FDA Rule SD0083</font>
 
@@ -227,7 +227,7 @@ The query result shows Animal 99T11 is assigned two `usubjid`, in violation of t
 </pre>
 
 
-Verify
+<font class='verify'>Verify</font>
 
 SPARQL independently verifies `Animal_6204e90c` as having two USUBJID values. File: [/SPARQL/USUBJID-RC1RC2-TC1-Verify.rq](https://github.com/phuse-org/SENDConform/blob/master/SPARQL/USUBJID-RC1RC2-TC1-Verify.rq)
 <pre class='sparql'>
@@ -295,7 +295,8 @@ cj16050:Animal_6204e90c   study:participatesIn         cj16050:SexDataCollection
 </pre>
 
 
-Verify
+<font class='verify'>Verify</font>
+
 SPARQL independently confirms the report identifying `Animal_22218ae1c` as having no USUBJID. Because `usubjid` is used as the `skos:prefLabel` for AnimalSubject, there is not label to return when `usubjid` is missing. File: [/SPARQL/USUBJID-RC1RC2-TC2-Verify.rq](https://github.com/phuse-org/SENDConform/blob/master/SPARQL/USUBJID-RC1RC2-TC2-Verify.rq)
 
 <pre class="sparql">
@@ -462,7 +463,7 @@ Use the AnimalSubject IRI values to identify the `usubjid`. File: [/SPARQL/USUBJ
 
 
 
-Verify
+<font class='verify'>Verify</font>
 
 Independently verify `Animal_252450f2` and `Animal_2706cb1e` share the same USUBJID (and consequently the same label for the AnimalSubject and USUBJID). File: [/SPARQL/USUBJID-RC3-M2-Verify.rq](https://github.com/phuse-org/SENDConform/blob/master/USUBJID-RC3-M2-Verify.rq)
 <pre class='sparql'>
@@ -488,7 +489,7 @@ Independently verify `Animal_252450f2` and `Animal_2706cb1e` share the same USUB
 ---
 <a name='ruleSD1001'></a>
 
-##  **SUBJID**
+###  **SUBJID**
 
 <font class='ruleComponent'>FDA Rule SD1001</font>
 
@@ -501,7 +502,7 @@ FDA Validator Rule ID | FDA Validator Message | Business or Conformance Rule Val
 The Rule Components and corresponding SHACL shapes for SD1001 are similar to those defined for <a href='#ruleSD0083'>USUBJID/SD0083</a> with exception of the predicate changing to `study:hasSubjectID`and result messages specific to SUBJID instead of USUBJID. Details for SD1001 are therefore not provided here. The SHACL is available in the Shapes file [SHACL-AnimalSubject.TTL](../SHACL/CJ16050Constraints/SHACL-AnimalSubject.TTL)
 
 
-## Reference Interval
+## **Reference Interval**
 <font class='ruleComponent'>FDA Rule SD1002</font>
 
 ***Figure 1*** shows the connection from the Animal Subject IRI to its Reference Interval and the associated  SHACL Shapes and SEND Rules.
@@ -648,7 +649,7 @@ The Report identifies the dates "7-DEC-16"  and "6-DEC-16" (not shown above). Ex
   }
 </pre>
 
-<font class='ruleComponent'>Verify</font>
+<font class='verify'>Verify</font>
 
 SPARQL independently verifies the test case by finding the two dates that are incorrectly typed as strings. Source file: [/SPARQL/Animal-RefInterval.rq](https://github.com/phuse-org/SENDConform/blob/master/SPARQL/Animal-RefInterval.rq)
 
@@ -760,7 +761,7 @@ SPARQL identifies the reported IRI as belonging to AnimalSubject 99T11, also con
   }  ORDER BY ?p
 </pre>
 
-<font class='ruleComponent'>Verify</font>
+<font class='verify'>Verify</font>
 
 Verification identifies Animal Subject 99T11 with no Reference Interval.
 
@@ -922,7 +923,7 @@ WHERE{
 }
 </pre>
 
-<font class='ruleComponent'>Verify</font>
+<font class='verify'>Verify</font>
  The query below correctly lists the AnimalSubjects with start and end date data issues as 99T2, 99T5, 99T8, 99T9.
 
 
