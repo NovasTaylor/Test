@@ -1,5 +1,5 @@
 ---
-title: "Nonclinical Study Data (SEND) Conformance and Validation"
+title: "Nonclinical Study Data (SEND) Validation & Submission Conformance"
 keywords: homepage
 toc: false
 tags:
@@ -16,8 +16,8 @@ This project is a proof of concept investigating the use of Linked Data for vali
 When both study sponsors and regulatory agencies use common data models and rules across the entire data lifecycle, data quality is greatly improved and the
 submission and approval process is more efficient.
 
-<hr/>
+<hr class='sectionBreak' />
 
-<font class='toBeAdded'>This site is under construction. Many pages within the **Submission** section will be developed in the coming weeks. Please use the [mydoc_references_contact_us.md](Contact Us) page to report errors and ommissions - and to join our team of volunteers!
+<font class='toBeAdded'>Site under construction! Many pages within the **Submission** section will be developed in the coming weeks. Please use the [Contact Us](mydoc_references_contact_us.html) page to report errors and omissions - and to join our team of volunteers!
 
 Thank you for your patience.  </font>

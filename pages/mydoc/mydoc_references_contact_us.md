@@ -17,7 +17,7 @@ This project is a PhUSE volunteer effort that is part of the Emerging Trends and
 
 **Dr. Armando Oliva**
 
-<a href = 'mailto:aoliva@semanticallc.com?subject = "PhUSE Project: SEND Conformance and Validation"'>aoliva@semanticallc.com</a>
+<a href = 'mailto:aolivamd@gmail.com?subject = "PhUSE Project: SEND Conformance and Validation"'>aolivamd@gmail.com</a>
 
 
 {% include links.html %}

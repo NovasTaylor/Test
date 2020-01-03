@@ -1,8 +1,4 @@
 
-
-/*
-  From original SENDConform CSS
-*/
 /*---------------------------------------------------------------------------*/
 /* General Font formatting                                                   */
 /*---------------------------------------------------------------------------*/
@@ -283,6 +279,14 @@ pre.queryResult:before {
   font-size:95%;
 }
 */
+
+/*--- Non-font elements ------------------------------------------------------*//* Large rounded green border */
+hr.sectionBreak {
+  border: 3px solid #015CAE;
+  border-radius: 1px;
+}
+
+
 
 /*---  from Github styles ---------------------------------------------------*/
 /* https://gist.github.com/andyferra/2554919  */

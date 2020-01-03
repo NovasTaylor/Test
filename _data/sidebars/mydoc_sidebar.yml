@@ -6,18 +6,6 @@ entries:
   version:
   folders:
 
-  - title:
-    output: pdf
-    type: frontmatter
-    folderitems:
-    - title:
-      url: /titlepage.html
-      output: pdf
-      type: frontmatter
-    - title:
-      url: /tocpage.html
-      output: pdf
-      type: frontmatter
 
   - title: Introduction
     output: web, pdf
@@ -42,7 +30,7 @@ entries:
       output: web, pdf
 
 
-  - title: SEND Data
+  - title: SEND Data Validation
     output: web
     folderitems:
 
@@ -58,9 +46,6 @@ entries:
       url: /mydoc_senddata_send_rules.html
       output: web
 
-
-
-
     - title: SHACL Shapes
       url: /mydoc_senddata_shacl_shapes.html
       output: web, pdf
@@ -70,7 +55,7 @@ entries:
       output: web, pdf
 
 
-  - title: Submission
+  - title: Submission Conformance
     output: web, pdf
     folderitems:
 
