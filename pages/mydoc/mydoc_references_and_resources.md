@@ -42,6 +42,7 @@ An introduction to SHACL is beyond the scope of this project. The following reso
 
 ## Project Publications
 <font class='toBeAdded'>A list of publications related to the project.</font>
+* [Building a F.A.I.R. Foundation for Pharma](https://www.phusewiki.org/docs/2019%20Amsterdam/Papers_presentations/TT/TT%20Final%20Papers/TT01.pdf) (Section: Roofshot 3: A Linked Data Approach to SEND Conformance )
 
 
 {% include links.html %}
