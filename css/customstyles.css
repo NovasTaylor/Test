@@ -282,8 +282,8 @@ pre.queryResult:before {
 
 /*--- Non-font elements ------------------------------------------------------*//* Large rounded green border */
 hr.sectionBreak {
-  border: 3px solid #015CAE;
-  border-radius: 1px;
+  border: 3px solid #347ebe;  /* blue matches header line  */
+  border-radius: 2px;
 }
 
 
