@@ -26,4 +26,5 @@ When data has shape, it makes sense to define validation rules as shapes. This i
 
 <br><br>
 This project deconstructs FDA SEND rules and submission criteria into their constituent components. Each rule is interpreted, transformed to its corresponding SHACL shape, applied to example data to generate a validation report, then confirmed independently using SPARQL.
+
 {% include links.html %}

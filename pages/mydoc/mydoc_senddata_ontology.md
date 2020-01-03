@@ -8,14 +8,13 @@ folder: mydoc
 
 ## Introduction
 
-<font class='toBeAdded'>Information will be added describing the ontologies used for both Data Conversion and Validation.</font>
+<font class='toBeAdded'>Add: Describe the ontologies used for Data Conversion and Validation.</font>
 
 ## Modeling Philosophy
-<font class='toBeAdded'>...to be added </font>
+<font class='toBeAdded'>Add.</font>
 
 ## Web Protege
-<font class='toBeAdded'>...How to access and use Web Protege for the project ontologies</font>
-
+<font class='toBeAdded'>Add: How to access and use Web Protege for the project ontologies</font>
 
 ## Ontology Notes from Armando
 

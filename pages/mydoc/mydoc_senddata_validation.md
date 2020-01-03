@@ -47,9 +47,9 @@ You may redirect the report to a text file on your local machine:
 
 ### PHUSE Endpoint
 
-*Add: Instructions for running the report on the public PHUSE Endpoint*
+<font class='toBeAdded'>Add: Instructions for running the report on the public PHUSE Endpoint</font>
 
 ## TopBraid
-<font class='toBeAdded'>Instructions for TopBraid</font>
+<font class='toBeAdded'>Add: Instructions for TopBraid.</font>
 
 {% include links.html %}

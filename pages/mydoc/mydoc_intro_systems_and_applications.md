@@ -8,10 +8,9 @@ folder: mydoc
 
 ## Introduction
 
-<font class='toBeAdded'> This page will describe the Triplestore used in the project, coding languages, interface creation tools, etc.</font>
-
+<font class='toBeAdded'>Add: Describe the Triplestore used in the project, coding languages, interface creation tools, etc.</font>
 
 ## Accessing the PhUSE Stardog Environment
-<font class='toBeAdded'>How to access the online project triplestore...</font>
+<font class='toBeAdded'>Add: How to access the online project triplestore...</font>
 
 {% include links.html %}

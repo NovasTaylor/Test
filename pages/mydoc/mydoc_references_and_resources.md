@@ -10,7 +10,7 @@ folder: mydoc
 ### Techincal Rejection Criteria
 
 ### SEND Validation
-nformation can be found on the FDA Website: https://www.fda.gov/industry/fda-resources-data-standards/study-data-standards-resources
+Information can be found on the FDA Website: https://www.fda.gov/industry/fda-resources-data-standards/study-data-standards-resources
 
 * [FDA Study Validator Rules](FDA/FDA-Validator-Rules.xlsx) (Excel)
    * Validator Rules, FDA source:  https://www.fda.gov/industry/fda-resources-data-standards/study-data-standards-resources  (then follow "Validator Rules" spreadsheet)
@@ -36,7 +36,8 @@ An introduction to SHACL is beyond the scope of this project. The following reso
 
 
 ## Ontology
-<font class='toBeAdded'>Add: References about ontology and ontology development.
+<font class='toBeAdded'>Add: References about ontology and ontology development.</font>
+
 * [Web Protege Wiki](https://protegewiki.stanford.edu/wiki/WebProtege)
 
 ## Project Publications

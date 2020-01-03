@@ -35,7 +35,7 @@ Instructions on how to create validation reports in Stardog is available on the 
 
 The data conversion process adds observations to violate the various SHACL shape rule components. Test observations are identified by `subjid` and `usubjid` values containing the pattern **99T**<font class='parameter'>n</font>, in contrast to the original study data values of **00M0**<font class='parameter'>n</font>. Test cases are documented in the file [TestCases.xlsx](https://github.com/phuse-org/SENDConform/blob/master/SHACL/CJ16050Constraints/TestCases.xlsx)
 
-### Creating Unique Identifiers for Animal Subjects
+### Animal Subject IRIs
 At first it may seem reasonable to use `subjid` or `usubjid` when forming IRIs for Animal Subjects. IRI creation is simple and the human-readable value facilitates traceability back to the original source. For example, the IRI for Subject 00M01 would be:
 `cj16050:Animal_00M01`
 
@@ -82,7 +82,7 @@ See [SHACL Shapes](mydoc_senddata_shacl_shapes.html) for how validation shapes a
 
 * `skos:prefLabel` is the primary label used in the graph. For controlled terms, `skos:prefLabel` contains the industry standard (CDISC) label, which is often in plural form (DAYS, WEEKS, etc.) while `rdfs:label` contains the W3C standard in singular form (DAY, WEEK, etc.). `rdfs:label` is optional for all other triples.
 
-<font class='toBeAdded'>Additional RDF Conventions will be added</font>
+<font class='toBeAdded'>Additional RDF Conventions will be added.</font>
 
 ## Conversion Details
 
